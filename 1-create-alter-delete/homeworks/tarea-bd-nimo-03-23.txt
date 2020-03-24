@@ -1,0 +1,400 @@
+SYSTEM-SQL> prompt Tarea 1 SQL - Néstor Iván Martínez Ostoa
+Tarea 1 SQL - Néstor Iván Martínez Ostoa
+SYSTEM-SQL> prompt 23-03-2020
+23-03-2020
+SYSTEM-SQL> create or replace directory tmp_dir as '/tmp/bases';
+
+Directory created.
+
+SYSTEM-SQL> grant read, write on directory tmp_dir to nestor0307;
+
+Grant succeeded.
+
+SYSTEM-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> cl scr;
+
+NESTOR0307-SQL> create table empleado_ext2(
+  2  num_empleado number(10,0),
+  3  nombre varchar2(20),
+  4  ap_paterno varchar2(20),
+  5  ap_materno varchar2(20),
+  6  fecha_nacimiento date,
+  7  email varchar2(20) null,
+  8  sueldo_mensual number(8,2),
+  9  comision number(5,2)
+ 10  )
+ 11  organization external (
+ 12  type oracle_loader
+ 13  default directory tmp_dir
+ 14  access parameters(
+ 15  records delimited by newline
+ 16  badfile tmp_dir:'empleado_ext2_bad.log'
+ 17  logfile tmp_dir:'empleado_ext2.log'
+ 18  lrtrim
+ 19  missing field values are null
+ 20  (
+ 21  num_empleado, nombre, ap_paterno, ap_materno, fecha_nacimiento date mask "dd/mm/yyyy",
+ 22  email, sueldo_mensual, comision
+ 23  )
+ 24  )
+ 25  location('empleado_ext2.csv')
+ 26  )
+ 27  reject limit unlimited;
+
+Table created.
+
+NESTOR0307-SQL> col num_empleado heading '#|Empleado'
+NESTOR0307-SQL> col ap_paterno heading'Ap|Paterno'
+NESTOR0307-SQL> col ap_materno heading 'Ap|Materno'
+NESTOR0307-SQL> col fecha_nacimiento heading 'Fecha|Nacimiento'
+NESTOR0307-SQL> col sueldo_mensual heading 'Sueldo|Mensual'
+NESTOR0307-SQL> select * from empleado_ext2;
+
+                                  Ap                   Ap                       
+NUM_EMPLEADO NOMBRE               Paterno              Materno                  
+------------ -------------------- -------------------- --------------------     
+Fecha                                       Sueldo                              
+Nacimiento         EMAIL                   Mensual   COMISION                   
+------------------ -------------------- ---------- ----------                   
+         100 juan                 lopez                martinez                 
+10-OCT-87                                                                       
+                                                                                
+         101 mario                jimenez              perez                    
+23-AUG-99                                                                       
+                                                                                
+         102 nestor               martinez             ostoa                    
+
+                                  Ap                   Ap                       
+NUM_EMPLEADO NOMBRE               Paterno              Materno                  
+------------ -------------------- -------------------- --------------------     
+Fecha                                       Sueldo                              
+Nacimiento         EMAIL                   Mensual   COMISION                   
+------------------ -------------------- ---------- ----------                   
+05-SEP-98          nestor@example.com       150000         .5                   
+                                                                                
+         103 yazmin               ramirez              santos                   
+04-AUG-98                                   340555         .4                   
+                                                                                
+         104 ramon                perez                ayala                    
+07-APR-79          ramon@example.com                       .8                   
+
+                                  Ap                   Ap                       
+NUM_EMPLEADO NOMBRE               Paterno              Materno                  
+------------ -------------------- -------------------- --------------------     
+Fecha                                       Sueldo                              
+Nacimiento         EMAIL                   Mensual   COMISION                   
+------------------ -------------------- ---------- ----------                   
+                                                                                
+         105 lionel               juarez               duran                    
+03-MAY-89          lionel@example.com        67989                              
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col nombre format a6
+NESTOR0307-SQL> /
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO NOMBRE Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   COMISION                                      
+-------------------- ---------- ----------                                      
+         100 juan   lopez                martinez             10-OCT-87         
+                                                                                
+                                                                                
+         101 mario  jimenez              perez                23-AUG-99         
+                                                                                
+                                                                                
+         102 nestor martinez             ostoa                05-SEP-98         
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO NOMBRE Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   COMISION                                      
+-------------------- ---------- ----------                                      
+nestor@example.com       150000         .5                                      
+                                                                                
+         103 yazmin ramirez              santos               04-AUG-98         
+                         340555         .4                                      
+                                                                                
+         104 ramon  perez                ayala                07-APR-79         
+ramon@example.com                       .8                                      
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO NOMBRE Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   COMISION                                      
+-------------------- ---------- ----------                                      
+                                                                                
+         105 lionel juarez               duran                03-MAY-89         
+lionel@example.com        67989                                                 
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col nombre heading 'Nombre'
+NESTOR0307-SQL> col comision heading 'Comision'
+NESTOR0307-SQL> /
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO Nombre Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   Comision                                      
+-------------------- ---------- ----------                                      
+         100 juan   lopez                martinez             10-OCT-87         
+                                                                                
+                                                                                
+         101 mario  jimenez              perez                23-AUG-99         
+                                                                                
+                                                                                
+         102 nestor martinez             ostoa                05-SEP-98         
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO Nombre Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   Comision                                      
+-------------------- ---------- ----------                                      
+nestor@example.com       150000         .5                                      
+                                                                                
+         103 yazmin ramirez              santos               04-AUG-98         
+                         340555         .4                                      
+                                                                                
+         104 ramon  perez                ayala                07-APR-79         
+ramon@example.com                       .8                                      
+
+                    Ap                   Ap                   Fecha             
+NUM_EMPLEADO Nombre Paterno              Materno              Nacimiento        
+------------ ------ -------------------- -------------------- ------------------
+                         Sueldo                                                 
+EMAIL                   Mensual   Comision                                      
+-------------------- ---------- ----------                                      
+                                                                                
+         105 lionel juarez               duran                03-MAY-89         
+lionel@example.com        67989                                                 
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col ap_paterno format a8
+NESTOR0307-SQL> col ap_materno format a8
+NESTOR0307-SQL> /
+
+                    Ap       Ap       Fecha                                     
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento         EMAIL                  
+------------ ------ -------- -------- ------------------ --------------------   
+    Sueldo                                                                      
+   Mensual   Comision                                                           
+---------- ----------                                                           
+         100 juan   lopez    martinez 10-OCT-87                                 
+                                                                                
+                                                                                
+         101 mario  jimenez  perez    23-AUG-99                                 
+                                                                                
+                                                                                
+         102 nestor martinez ostoa    05-SEP-98          nestor@example.com     
+
+                    Ap       Ap       Fecha                                     
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento         EMAIL                  
+------------ ------ -------- -------- ------------------ --------------------   
+    Sueldo                                                                      
+   Mensual   Comision                                                           
+---------- ----------                                                           
+    150000         .5                                                           
+                                                                                
+         103 yazmin ramirez  santos   04-AUG-98                                 
+    340555         .4                                                           
+                                                                                
+         104 ramon  perez    ayala    07-APR-79          ramon@example.com      
+                   .8                                                           
+
+                    Ap       Ap       Fecha                                     
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento         EMAIL                  
+------------ ------ -------- -------- ------------------ --------------------   
+    Sueldo                                                                      
+   Mensual   Comision                                                           
+---------- ----------                                                           
+                                                                                
+         105 lionel juarez   duran    03-MAY-89          lionel@example.com     
+     67989                                                                      
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col fecha_nacimiento a10
+SP2-0158: unknown COLUMN option "a10"
+NESTOR0307-SQL> col fecha_nacimiento format a10
+NESTOR0307-SQL> col email heading 'Email'
+NESTOR0307-SQL> /
+
+                    Ap       Ap       Fecha                               Sueldo
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email                   Mensual
+------------ ------ -------- -------- ---------- -------------------- ----------
+  Comision                                                                      
+----------                                                                      
+         100 juan   lopez    martinez 10-OCT-87                                 
+                                                                                
+                                                                                
+         101 mario  jimenez  perez    23-AUG-99                                 
+                                                                                
+                                                                                
+         102 nestor martinez ostoa    05-SEP-98  nestor@example.com       150000
+        .5                                                                      
+
+                    Ap       Ap       Fecha                               Sueldo
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email                   Mensual
+------------ ------ -------- -------- ---------- -------------------- ----------
+  Comision                                                                      
+----------                                                                      
+                                                                                
+         103 yazmin ramirez  santos   04-AUG-98                           340555
+        .4                                                                      
+                                                                                
+         104 ramon  perez    ayala    07-APR-79  ramon@example.com              
+        .8                                                                      
+                                                                                
+         105 lionel juarez   duran    03-MAY-89  lionel@example.com        67989
+
+                    Ap       Ap       Fecha                               Sueldo
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email                   Mensual
+------------ ------ -------- -------- ---------- -------------------- ----------
+  Comision                                                                      
+----------                                                                      
+                                                                                
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col email format a10
+NESTOR0307-SQL> /
+
+                    Ap       Ap       Fecha                     Sueldo          
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email         Mensual          
+------------ ------ -------- -------- ---------- ---------- ----------          
+  Comision                                                                      
+----------                                                                      
+         100 juan   lopez    martinez 10-OCT-87                                 
+                                                                                
+                                                                                
+         101 mario  jimenez  perez    23-AUG-99                                 
+                                                                                
+                                                                                
+         102 nestor martinez ostoa    05-SEP-98  nestor@exa     150000          
+                                                 mple.com                       
+
+                    Ap       Ap       Fecha                     Sueldo          
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email         Mensual          
+------------ ------ -------- -------- ---------- ---------- ----------          
+  Comision                                                                      
+----------                                                                      
+        .5                                                                      
+                                                                                
+         103 yazmin ramirez  santos   04-AUG-98                 340555          
+        .4                                                                      
+                                                                                
+         104 ramon  perez    ayala    07-APR-79  ramon@exam                     
+                                                 ple.com                        
+        .8                                                                      
+
+                    Ap       Ap       Fecha                     Sueldo          
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email         Mensual          
+------------ ------ -------- -------- ---------- ---------- ----------          
+  Comision                                                                      
+----------                                                                      
+                                                                                
+         105 lionel juarez   duran    03-MAY-89  lionel@exa      67989          
+                                                 mple.com                       
+                                                                                
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col sueldo_mensual format $999,990
+NESTOR0307-SQL> /
+
+                    Ap       Ap       Fecha                    Sueldo           
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email        Mensual   COMISION
+------------ ------ -------- -------- ---------- ---------- --------- ----------
+         100 juan   lopez    martinez 10-OCT-87                                 
+         101 mario  jimenez  perez    23-AUG-99                                 
+         102 nestor martinez ostoa    05-SEP-98  nestor@exa  $150,000         .5
+                                                 mple.com                       
+                                                                                
+         103 yazmin ramirez  santos   04-AUG-98              $340,555         .4
+         104 ramon  perez    ayala    07-APR-79  ramon@exam                   .8
+                                                 ple.com                        
+                                                                                
+         105 lionel juarez   duran    03-MAY-89  lionel@exa   $67,989           
+
+                    Ap       Ap       Fecha                    Sueldo           
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email        Mensual   COMISION
+------------ ------ -------- -------- ---------- ---------- --------- ----------
+                                                 mple.com                       
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col email format a10
+NESTOR0307-SQL> col nombre format a4
+NESTOR0307-SQL> 7
+SP2-0226: Invalid line number 
+NESTOR0307-SQL> /
+
+                  Ap       Ap       Fecha                    Sueldo             
+NUM_EMPLEADO Nomb Paterno  Materno  Nacimiento Email        Mensual   COMISION  
+------------ ---- -------- -------- ---------- ---------- --------- ----------  
+         100 juan lopez    martinez 10-OCT-87                                   
+         101 mari jimenez  perez    23-AUG-99                                   
+             o                                                                  
+                                                                                
+         102 nest martinez ostoa    05-SEP-98  nestor@exa  $150,000         .5  
+             or                                mple.com                         
+                                                                                
+         103 yazm ramirez  santos   04-AUG-98              $340,555         .4  
+             in                                                                 
+                                                                                
+
+                  Ap       Ap       Fecha                    Sueldo             
+NUM_EMPLEADO Nomb Paterno  Materno  Nacimiento Email        Mensual   COMISION  
+------------ ---- -------- -------- ---------- ---------- --------- ----------  
+         104 ramo perez    ayala    07-APR-79  ramon@exam                   .8  
+             n                                 ple.com                          
+                                                                                
+         105 lion juarez   duran    03-MAY-89  lionel@exa   $67,989             
+             el                                mple.com                         
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> col nombre format a6
+NESTOR0307-SQL> /
+
+                    Ap       Ap       Fecha                    Sueldo           
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email        Mensual   COMISION
+------------ ------ -------- -------- ---------- ---------- --------- ----------
+         100 juan   lopez    martinez 10-OCT-87                                 
+         101 mario  jimenez  perez    23-AUG-99                                 
+         102 nestor martinez ostoa    05-SEP-98  nestor@exa  $150,000         .5
+                                                 mple.com                       
+                                                                                
+         103 yazmin ramirez  santos   04-AUG-98              $340,555         .4
+         104 ramon  perez    ayala    07-APR-79  ramon@exam                   .8
+                                                 ple.com                        
+                                                                                
+         105 lionel juarez   duran    03-MAY-89  lionel@exa   $67,989           
+
+                    Ap       Ap       Fecha                    Sueldo           
+NUM_EMPLEADO Nombre Paterno  Materno  Nacimiento Email        Mensual   COMISION
+------------ ------ -------- -------- ---------- ---------- --------- ----------
+                                                 mple.com                       
+                                                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/homeworks/tarea-bd-nimo-03-23.txt append
+NESTOR0307-SQL> exit

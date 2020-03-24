@@ -1,0 +1,32 @@
+NESTOR0307-SQL> desc Dictionary;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ TABLE_NAME                                         VARCHAR2(128)
+ COMMENTS                                           VARCHAR2(4000)
+
+NESTOR0307-SQL> select count(*) from table_name;
+select count(*) from table_name
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> select count(*) from table_name;
+select count(*) from table_name
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> edit
+SP2-0110: Cannot create save file "afiedt.buf"
+NESTOR0307-SQL> select table_name from users;
+select table_name from users
+                       *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/bd-03-nimo-03-20-v4.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> exit

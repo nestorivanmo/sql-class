@@ -1,0 +1,91 @@
+SYSTEM-SQL> prompt Tarea 1 SQL - Néstor Iván Martínez Ostoa
+Tarea 1 SQL - Néstor Iván Martínez Ostoa
+SYSTEM-SQL> prompt 23-03-2020
+23-03-2020
+SYSTEM-SQL> create or replace directory tmp_dir as '/tmp/bases';
+
+Directory created.
+
+SYSTEM-SQL> grant read, write on directory tmp_dir to nestor0307;
+
+Grant succeeded.
+
+SYSTEM-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> cl scr;
+
+NESTOR0307-SQL> create table empleado_ext2(
+  2  num_empleado number(10,0),
+  3  nombre varchar2(20),
+  4  ap_paterno varchar2(20),
+  5  ap_materno varchar2(20),
+  6  fecha_nacimiento date,
+  7  email varchar2(20) null,
+  8  sueldo_mensual number(8,2),
+  9  comision number(5,2)
+ 10  )
+ 11  organization external (
+ 12  type oracle_loader
+ 13  default directory tmp_dir
+ 14  access parameters(
+ 15  records delimited by newline
+ 16  badfile tmp_dir:'empleado_ext2_bad.log'
+ 17  logfile tmp_dir:'empleado_ext2.log'
+ 18  lrtrim
+ 19  missing field values are null
+ 20  (
+ 21  num_empleado, nombre, ap_paterno, ap_materno, fecha_nacimiento date mask "dd/mm/yyyy",
+ 22  email, sueldo_mensual, comision
+ 23  )
+ 24  )
+ 25  location('empleado_ext2.csv')
+ 26  )
+ 27  reject limit unlimited;
+
+Table created.
+
+NESTOR0307-SQL> select * from empleado_ext2;
+select * from empleado_ext2
+*
+ERROR at line 1:
+ORA-29913: error in executing ODCIEXTTABLEOPEN callout
+ORA-29400: data cartridge error
+KUP-00554: error encountered while parsing access parameters
+KUP-01005: syntax error: found "lrtrim": expecting one of: "badfile,
+byteordermark, characterset, column, compression, credential, data, delimited,
+discardfile, dnfs_enable, dnfs_disable, disable_directory_link_check, escape,
+field, fields, fixed, io_options, ignore_blank_lines, ignore_header, load,
+logfile, language, nodiscardfile, nobadfile, nologfile, date_cache,
+dnfs_readbuffers, preprocessor, readsize, string, skip, territory, variable,
+validate_table_data, xmltag"
+KUP-01007: at line 4 column 1 
+
+
+NESTOR0307-SQL> prompt creando el directorio /tmp/bases
+creando el directorio /tmp/bases
+NESTOR0307-SQL> !mkdir -p /tmp/bases
+
+NESTOR0307-SQL> !chmod 777 /tmp/bases
+
+NESTOR0307-SQL> !cp /home/nestorivanmo/Downloads/empleado_ext2.csv /tmp/bases
+
+NESTOR0307-SQL> !cat /tmp/bases/empleado_ext2.csv
+
+NESTOR0307-SQL> select * from empleado_ext2;
+select * from empleado_ext2
+*
+ERROR at line 1:
+ORA-29913: error in executing ODCIEXTTABLEOPEN callout
+ORA-29400: data cartridge error
+KUP-00554: error encountered while parsing access parameters
+KUP-01005: syntax error: found "lrtrim": expecting one of: "badfile,
+byteordermark, characterset, column, compression, credential, data, delimited,
+discardfile, dnfs_enable, dnfs_disable, disable_directory_link_check, escape,
+field, fields, fixed, io_options, ignore_blank_lines, ignore_header, load,
+logfile, language, nodiscardfile, nobadfile, nologfile, date_cache,
+dnfs_readbuffers, preprocessor, readsize, string, skip, territory, variable,
+validate_table_data, xmltag"
+KUP-01007: at line 4 column 1 
+
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/homeworks/tarea.txt append

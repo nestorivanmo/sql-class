@@ -1,0 +1,92 @@
+SQL> !ls Desktopn/sql-class/1-create-alter-delte/*.txt
+
+SQL> !ls Desktop/sql-class/1-create-alter-delete/*.txt
+
+SQL> !ll Desktop/sql-class/1-create-alter-delete/*.txt
+
+SQL> !ls -l Desktop/sql-class/1-create-alter-delete/*.txt
+
+SQL> exit
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> startup
+ORA-01031: insufficient privileges
+ORA-01078: failure in processing system parameters
+SQL> show user
+USER is "SYSTEM"
+SQL> exit
+SYSTEM-SQL> create user nestor0307 identified by nestor quota unlimited on users;
+
+User created.
+
+SYSTEM-SQL> grant create session, create table to nestor0307;
+
+Grant succeeded.
+
+SYSTEM-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/bd-03-nimo-03-20.txt append
+SYSTEM-SQL> create or replace tmp_dir as '/tmp/bases';
+create or replace tmp_dir as '/tmp/bases'
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SYSTEM-SQL> create or replace tmp_dir as '/tmp/bases'
+  2  ;
+create or replace tmp_dir as '/tmp/bases'
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SYSTEM-SQL> exit
+NESTOR0307-SQL> create table empleado_ext(
+  2  num_empleado number(10,0),
+  3  nombre varchar2(40),
+  4  fecha_nacimiento date
+  5  )
+  6  organization external(
+  7  type oracle_loader
+  8  default directory tmp_dir
+  9  access parameters(
+ 10  records delimited by newline
+ 11  badfile tmp_dir: 'empleado_ext_bad.log'
+ 12  logfile tmp_dir: 'empleado_ext.log'
+ 13  fields terminated by ','
+ 14  lrtrim
+ 15  missing field values are null 
+ 16  (
+ 17  num_empleado, nombre, fecha_nacimiento date mask "dd/mm/yyyy" 
+ 18  )
+ 19  )
+ 20  location ('empleado_ext.csv')
+ 21  )
+ 22  reject limit unlimited;
+
+Table created.
+
+NESTOR0307-SQL> !mkdir -p /tmp/bases
+
+NESTOR0307-SQL> !chmod 777 /tmp/bases
+
+NESTOR0307-SQL> col nombre format a20 
+NESTOR0307-SQL> col fecha_nacimiento a20
+SP2-0158: unknown COLUMN option "a20"
+NESTOR0307-SQL> col fecha_nacimiento format a20
+NESTOR0307-SQL> col num_cuenta format a20
+NESTOR0307-SQL> select * from empleado_ext;
+
+NUM_EMPLEADO NOMBRE		  FECHA_NACIMIENTO
+------------ -------------------- --------------------
+	1000 Juanito		  01-MAR-00
+	1001 Luisa		  03-AUG-98
+
