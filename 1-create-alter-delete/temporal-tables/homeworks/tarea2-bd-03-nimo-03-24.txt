@@ -1,0 +1,27 @@
+NESTOR0307-SQL> create global temporary table empleado2_temp(
+  2  empleado_id number(10,0) not null,
+  3  nombre varchar2(20) not null
+  4  ) on commit delete rows;
+
+Table created.
+
+NESTOR0307-SQL> insert into empleado2_temp (empleado_id, nombre) values (1, 'nestor');
+
+1 row created.
+
+NESTOR0307-SQL> select * from empleado2_temp;
+
+EMPLEADO_ID NOMBRE                                                              
+----------- --------------------                                                
+          1 nestor                                                              
+
+NESTOR0307-SQL> commit;
+
+Commit complete.
+
+NESTOR0307-SQL> select * from empleado2_temp;
+
+no rows selected
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/homeworks/tarea2-start.txt append
+NESTOR0307-SQL> exit

@@ -1,0 +1,69 @@
+SYSTEM-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> create global temporary table empleado_temp(
+  2  empleado_id number(10,0) not null,
+  3  nombre varchar2(20) not null
+  4  ) on commit preserve rows;
+
+Table created.
+
+NESTOR0307-SQL> insert into empleado_ext (empleado_id, nombre)
+  2  values ( 1, 'nestor martinez' ) ;
+insert into empleado_ext (empleado_id, nombre)
+                          *
+ERROR at line 1:
+ORA-00904: "EMPLEADO_ID": invalid identifier 
+
+
+NESTOR0307-SQL> insert into empleado_temp (empleado_id, nombre) values (
+  2  1, 'nestor martinez'
+  3  );
+
+1 row created.
+
+NESTOR0307-SQL> select * from empleado_temp;
+
+EMPLEADO_ID NOMBRE                                                              
+----------- --------------------                                                
+          1 nestor martinez                                                     
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> commit ;
+
+Commit complete.
+
+NESTOR0307-SQL> /
+
+Commit complete.
+
+NESTOR0307-SQL> select * from empleado_temp;
+
+EMPLEADO_ID NOMBRE                                                              
+----------- --------------------                                                
+          1 nestor martinez                                                     
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> /
+
+EMPLEADO_ID NOMBRE                                                              
+----------- --------------------                                                
+          1 nestor martinez                                                     
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> disconnect
+Disconnected from Oracle Database 18c Enterprise Edition Release 18.0.0.0.0 - Production
+Version 18.3.0.0.0
+-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> /
+
+no rows selected
+
+NESTOR0307-SQL> select * from empleado_temp;
+
+no rows selected
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
