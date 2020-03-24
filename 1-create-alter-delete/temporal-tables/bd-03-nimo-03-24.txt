@@ -67,3 +67,164 @@ NESTOR0307-SQL> select * from empleado_temp;
 no rows selected
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> prompt columnas virtuales
+columnas virtuales
+NESTOR0307-SQL> create table calculo_sueldo (
+  2  fecha_calculo date not null,
+  3  sueldo_mensual number(10,2) not null,
+  4  sueldo_quincenal as (sueldo_mensual / 2) virtual,
+  5  iva as (sueldo_mensual + sueldo_mensual*0.16;
+iva as (sueldo_mensual + sueldo_mensual*0.16
+                                           *
+ERROR at line 5:
+ORA-02000: missing ) keyword 
+
+
+NESTOR0307-SQL> create table calculo_sueldo(
+  2  fecha_calculo date not null,
+  3  sueldo_mensual number(10,2) not null,
+  4  sueldo_quincenal number(10,2) not null generated always as (sueldo_mensual / 2) virtual,
+  5  iva not null as (sueldo_mensual*0.16)
+  6  );
+sueldo_quincenal number(10,2) not null generated always as (sueldo_mensual / 2) virtual,
+                                       *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+NESTOR0307-SQL> create table calculo_sueldo(
+  2  fecha_calculo date not null,
+  3  sueldo_mensual number(10,2) not null,
+  4  sueldo_quincenal number(10,2) generated always as (sueldo_mensual / 2) virtual,
+  5  iva as (sueldo_mensual * 0.16)
+  6  );
+
+Table created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> insert into sueldo_mensual(fecha_calculo, sueldo_mensual) values (
+  2  sysdate, 154067
+  3  );
+insert into sueldo_mensual(fecha_calculo, sueldo_mensual) values (
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> insert into calculo_sueldo (fecha_calculo, sueldo_mensual) values (
+  2  sysdate, 154067
+  3  );
+
+1 row created.
+
+NESTOR0307-SQL> select * from calculo_sueldo;
+
+FECHA_CALCULO      SUELDO_MENSUAL SUELDO_QUINCENAL        IVA                   
+------------------ -------------- ---------------- ----------                   
+24-MAR-20                  154067          77033.5   24650.72                   
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> prompt haciendo copia de respaldo
+haciendo copia de respaldo
+NESTOR0307-SQL> create table calculo_sueldo_copia(
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+NESTOR0307-SQL> create table calculo_sueldo_copia as
+  2  select * from calculo_sueldo;
+
+Table created.
+
+NESTOR0307-SQL> select * from calculo_sueldo_copia;
+
+FECHA_CALCULO      SUELDO_MENSUAL SUELDO_QUINCENAL        IVA                   
+------------------ -------------- ---------------- ----------                   
+24-MAR-20                  154067          77033.5   24650.72                   
+
+NESTOR0307-SQL> desc calculo_sueldo_copia;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FECHA_CALCULO                             NOT NULL DATE
+ SUELDO_MENSUAL                            NOT NULL NUMBER(10,2)
+ SUELDO_QUINCENAL                                   NUMBER(10,2)
+ IVA                                                NUMBER
+
+NESTOR0307-SQL> desc calculo_sueldo;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ FECHA_CALCULO                             NOT NULL DATE
+ SUELDO_MENSUAL                            NOT NULL NUMBER(10,2)
+ SUELDO_QUINCENAL                                   NUMBER(10,2)
+ IVA                                                NUMBER
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> prompt uso de default
+uso de default
+NESTOR0307-SQL> create table incidencia(
+  2  descripcion varchar2(20) not null,
+  3  fecha_registro date default sysdate,
+  4  tipo char(1) default 'N',
+  5  descuento number(5,2) default 5.5
+  6  );
+
+Table created.
+
+NESTOR0307-SQL> insert into incidencia (descripcion) values ('la primer descripcion');
+insert into incidencia (descripcion) values ('la primer descripcion')
+                                             *
+ERROR at line 1:
+ORA-12899: value too large for column "NESTOR0307"."INCIDENCIA"."DESCRIPCION"
+(actual: 21, maximum: 20) 
+
+
+NESTOR0307-SQL> insert into incidencia (descripcion) values ('primer prod');
+
+1 row created.
+
+NESTOR0307-SQL> select * from incidencia;
+
+DESCRIPCION          FECHA_REGISTRO     T  DESCUENTO                            
+-------------------- ------------------ - ----------                            
+primer prod          24-MAR-20          N        5.5                            
+
+NESTOR0307-SQL> insert into incidencia (descripcion, tipo, descuento) values ('segundo prod', 'A', 30);
+
+1 row created.
+
+NESTOR0307-SQL> select * from incidencia;
+
+DESCRIPCION          FECHA_REGISTRO     T  DESCUENTO                            
+-------------------- ------------------ - ----------                            
+primer prod          24-MAR-20          N        5.5                            
+segundo prod         24-MAR-20          A         30                            
+
+NESTOR0307-SQL> insert into incidencia(descripcion, fecha_registro) values ('tercer prod', 05-sep-1998);
+insert into incidencia(descripcion, fecha_registro) values ('tercer prod', 05-sep-1998)
+                                                                              *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+NESTOR0307-SQL> insert into incidencia (descripcion, fecha_registro) values ('tercer prod', to_date('05/09/1998', 'dd/mm/yyyy'));
+
+1 row created.
+
+NESTOR0307-SQL> select * from incidencia;
+
+DESCRIPCION          FECHA_REGISTRO     T  DESCUENTO                            
+-------------------- ------------------ - ----------                            
+primer prod          24-MAR-20          N        5.5                            
+segundo prod         24-MAR-20          A         30                            
+tercer prod          05-SEP-98          N        5.5                            
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append

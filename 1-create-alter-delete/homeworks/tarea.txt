@@ -89,3 +89,4 @@ KUP-01007: at line 4 column 1
 
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/homeworks/tarea.txt append
+NESTOR0307-SQL> exit
