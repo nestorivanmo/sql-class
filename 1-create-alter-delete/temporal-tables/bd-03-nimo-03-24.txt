@@ -228,3 +228,5 @@ segundo prod         24-MAR-20          A         30
 tercer prod          05-SEP-98          N        5.5                            
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/temporal-tables/bd-03-nimo-03-24.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> exit

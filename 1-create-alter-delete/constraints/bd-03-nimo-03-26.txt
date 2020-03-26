@@ -1,0 +1,806 @@
+SYSTEM-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> create table puesto(
+  2  puesto_id number(2,0) constraint puesto_pk primary key,
+  3  nivel char(1) not null constraint puesto_nivel_chk check (nivel in ('a', 'b', 'c')),
+  4  clave varchar2(3) not null constraint puesto_clave_uk unique,
+  5  sueldo number(8,2) not null constraint puesto_sueldo_chk check (sueldo<100000)
+  6  );
+
+Table created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> list last
+ 11* )
+NESTOR0307-SQL> list n
+SP2-0224: invalid starting line number
+NESTOR0307-SQL> list
+  1  create table puesto_tc(
+  2  	puesto_id number(10,0),
+  3  	nivel char(1) not null,
+  4  	clave varchar2(3) not null,
+  5  	sueldo number(8,2),
+  6  	constraint puesto_tc_pk primary key (puesto_id),
+  7  	constraint puesto_tc_nivel_chk check (nivel = 'a' or nivel = 'b' or nivel = 'c'),
+  8  	constraint puesto_tc_clave_uk unique (clave),
+  9  	constraint puesto_tc_sueldo_chk check (sueldo < 100000),
+ 10  	constraint puesto_tc_sueldo_nn check (sueldo is not null)
+ 11* )
+NESTOR0307-SQL> input
+ 12  
+NESTOR0307-SQL> list
+  1  create table puesto_tc(
+  2  	puesto_id number(10,0),
+  3  	nivel char(1) not null,
+  4  	clave varchar2(3) not null,
+  5  	sueldo number(8,2),
+  6  	constraint puesto_tc_pk primary key (puesto_id),
+  7  	constraint puesto_tc_nivel_chk check (nivel = 'a' or nivel = 'b' or nivel = 'c'),
+  8  	constraint puesto_tc_clave_uk unique (clave),
+  9  	constraint puesto_tc_sueldo_chk check (sueldo < 100000),
+ 10  	constraint puesto_tc_sueldo_nn check (sueldo is not null)
+ 11* )
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> desc USER_CONSTRAINTS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OWNER                                              VARCHAR2(128)
+ CONSTRAINT_NAME                                    VARCHAR2(128)
+ CONSTRAINT_TYPE                                    VARCHAR2(1)
+ TABLE_NAME                                         VARCHAR2(128)
+ SEARCH_CONDITION                                   LONG
+ SEARCH_CONDITION_VC                                VARCHAR2(4000)
+ R_OWNER                                            VARCHAR2(128)
+ R_CONSTRAINT_NAME                                  VARCHAR2(128)
+ DELETE_RULE                                        VARCHAR2(9)
+ STATUS                                             VARCHAR2(8)
+ DEFERRABLE                                         VARCHAR2(14)
+ DEFERRED                                           VARCHAR2(9)
+ VALIDATED                                          VARCHAR2(13)
+ GENERATED                                          VARCHAR2(14)
+ BAD                                                VARCHAR2(3)
+ RELY                                               VARCHAR2(4)
+ LAST_CHANGE                                        DATE
+ INDEX_OWNER                                        VARCHAR2(128)
+ INDEX_NAME                                         VARCHAR2(128)
+ INVALID                                            VARCHAR2(7)
+ VIEW_RELATED                                       VARCHAR2(14)
+ ORIGIN_CON_ID                                      NUMBER
+
+NESTOR0307-SQL> select CONSTRAINT_NAME, CONSTRAINT_TYPE, SERACH_CONDITION_VC
+  2  from USER_CONSTRAINTS
+  3  where TABLE_NAME = 'PUESTO_TC';
+select CONSTRAINT_NAME, CONSTRAINT_TYPE, SERACH_CONDITION_VC
+                                         *
+ERROR at line 1:
+ORA-00904: "SERACH_CONDITION_VC": invalid identifier 
+
+
+NESTOR0307-SQL> list 1
+  1* select CONSTRAINT_NAME, CONSTRAINT_TYPE, SERACH_CONDITION_VC
+NESTOR0307-SQL> change SERACH_CONDITION_VC/SEARCH_CONDITION
+SP2-0023: String not found.
+NESTOR0307-SQL> INPUT 1
+NESTOR0307-SQL> list 1
+  1* select CONSTRAINT_NAME, CONSTRAINT_TYPE, SERACH_CONDITION_VC
+NESTOR0307-SQL> change /SERACH_CONDITION/SEARCH_CONDITION
+  1* select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+NESTOR0307-SQL> /
+1
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+NESTOR0307-SQL> RUN
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  1
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+1
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+NESTOR0307-SQL> l 2
+  2* 1
+NESTOR0307-SQL> change /1/
+  2* 
+NESTOR0307-SQL> RUN
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+SYS_C007365                                                                     
+C                                                                               
+"NIVEL" IS NOT NULL                                                             
+                                                                                
+SYS_C007366                                                                     
+C                                                                               
+"CLAVE" IS NOT NULL                                                             
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+                                                                                
+PUESTO_TC_NIVEL_CHK                                                             
+C                                                                               
+nivel = 'a' or nivel = 'b' or nivel = 'c'                                       
+                                                                                
+PUESTO_TC_SUELDO_CHK                                                            
+C                                                                               
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+sueldo < 100000                                                                 
+                                                                                
+PUESTO_TC_SUELDO_NN                                                             
+C                                                                               
+sueldo is not null                                                              
+                                                                                
+PUESTO_TC_PK                                                                    
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+P                                                                               
+                                                                                
+                                                                                
+PUESTO_TC_CLAVE_UK                                                              
+U                                                                               
+                                                                                
+                                                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> COL search_condition format a20
+NESTOR0307-SQL> run
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+SYS_C007365                                                                     
+C                                                                               
+"NIVEL" IS NOT NULL                                                             
+                                                                                
+SYS_C007366                                                                     
+C                                                                               
+"CLAVE" IS NOT NULL                                                             
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+                                                                                
+PUESTO_TC_NIVEL_CHK                                                             
+C                                                                               
+nivel = 'a' or nivel = 'b' or nivel = 'c'                                       
+                                                                                
+PUESTO_TC_SUELDO_CHK                                                            
+C                                                                               
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+sueldo < 100000                                                                 
+                                                                                
+PUESTO_TC_SUELDO_NN                                                             
+C                                                                               
+sueldo is not null                                                              
+                                                                                
+PUESTO_TC_PK                                                                    
+
+CONSTRAINT_NAME                                                                 
+--------------------------------------------------------------------------------
+C                                                                               
+-                                                                               
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+P                                                                               
+                                                                                
+                                                                                
+PUESTO_TC_CLAVE_UK                                                              
+U                                                                               
+                                                                                
+                                                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> col constraint_name a20
+SP2-0158: unknown COLUMN option "a20"
+NESTOR0307-SQL> col constraint_name format a20
+NESTOR0307-SQL> run
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+SYS_C007365          C                                                          
+"NIVEL" IS NOT NULL                                                             
+                                                                                
+SYS_C007366          C                                                          
+"CLAVE" IS NOT NULL                                                             
+                                                                                
+PUESTO_TC_NIVEL_CHK  C                                                          
+nivel = 'a' or nivel = 'b' or nivel = 'c'                                       
+                                                                                
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+PUESTO_TC_SUELDO_CHK C                                                          
+sueldo < 100000                                                                 
+                                                                                
+PUESTO_TC_SUELDO_NN  C                                                          
+sueldo is not null                                                              
+                                                                                
+PUESTO_TC_PK         P                                                          
+                                                                                
+                                                                                
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+PUESTO_TC_CLAVE_UK   U                                                          
+                                                                                
+                                                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> col search_condition format a20
+NESTOR0307-SQL> run
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+SYS_C007365          C                                                          
+"NIVEL" IS NOT NULL                                                             
+                                                                                
+SYS_C007366          C                                                          
+"CLAVE" IS NOT NULL                                                             
+                                                                                
+PUESTO_TC_NIVEL_CHK  C                                                          
+nivel = 'a' or nivel = 'b' or nivel = 'c'                                       
+                                                                                
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+PUESTO_TC_SUELDO_CHK C                                                          
+sueldo < 100000                                                                 
+                                                                                
+PUESTO_TC_SUELDO_NN  C                                                          
+sueldo is not null                                                              
+                                                                                
+PUESTO_TC_PK         P                                                          
+                                                                                
+                                                                                
+
+CONSTRAINT_NAME      C                                                          
+-------------------- -                                                          
+SEARCH_CONDITION_VC                                                             
+--------------------------------------------------------------------------------
+PUESTO_TC_CLAVE_UK   U                                                          
+                                                                                
+                                                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> col search_condition_vc format a20
+NESTOR0307-SQL> run
+  1  select CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION_VC
+  2  
+  3  from USER_CONSTRAINTS
+  4* where TABLE_NAME = 'PUESTO_TC'
+
+CONSTRAINT_NAME      C SEARCH_CONDITION_VC                                      
+-------------------- - --------------------                                     
+SYS_C007365          C "NIVEL" IS NOT NULL                                      
+SYS_C007366          C "CLAVE" IS NOT NULL                                      
+PUESTO_TC_NIVEL_CHK  C nivel = 'a' or nivel                                     
+                        = 'b' or nivel = 'c                                     
+                       '                                                        
+                                                                                
+PUESTO_TC_SUELDO_CHK C sueldo < 100000                                          
+PUESTO_TC_SUELDO_NN  C sueldo is not null                                       
+PUESTO_TC_PK         P                                                          
+PUESTO_TC_CLAVE_UK   U                                                          
+
+7 rows selected.
+
+NESTOR0307-SQL> desc USER_OBJECTS
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ OBJECT_NAME                                        VARCHAR2(128)
+ SUBOBJECT_NAME                                     VARCHAR2(128)
+ OBJECT_ID                                          NUMBER
+ DATA_OBJECT_ID                                     NUMBER
+ OBJECT_TYPE                                        VARCHAR2(23)
+ CREATED                                            DATE
+ LAST_DDL_TIME                                      DATE
+ TIMESTAMP                                          VARCHAR2(19)
+ STATUS                                             VARCHAR2(7)
+ TEMPORARY                                          VARCHAR2(1)
+ GENERATED                                          VARCHAR2(1)
+ SECONDARY                                          VARCHAR2(1)
+ NAMESPACE                                          NUMBER
+ EDITION_NAME                                       VARCHAR2(128)
+ SHARING                                            VARCHAR2(18)
+ EDITIONABLE                                        VARCHAR2(1)
+ ORACLE_MAINTAINED                                  VARCHAR2(1)
+ APPLICATION                                        VARCHAR2(1)
+ DEFAULT_COLLATION                                  VARCHAR2(100)
+ DUPLICATED                                         VARCHAR2(1)
+ SHARDED                                            VARCHAR2(1)
+ CREATED_APPID                                      NUMBER
+ CREATED_VSNID                                      NUMBER
+ MODIFIED_APPID                                     NUMBER
+ MODIFIED_VSNID                                     NUMBER
+
+NESTOR0307-SQL> select object_name, object_type, status
+  2  from user_objects
+  3  ;
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+EMPLEADO_SIMPLE                                                                 
+TABLE                   VALID                                                   
+                                                                                
+EMPLEADO_EXT                                                                    
+TABLE                   VALID                                                   
+                                                                                
+CALCULO_SUELDO                                                                  
+TABLE                   VALID                                                   
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+EMPLEADO_EXT2                                                                   
+TABLE                   VALID                                                   
+                                                                                
+EMPLEADO_TEMP                                                                   
+TABLE                   VALID                                                   
+                                                                                
+EMPLEADO2_TEMP                                                                  
+TABLE                   VALID                                                   
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+CALCULO_SUELDO_COPIA                                                            
+TABLE                   VALID                                                   
+                                                                                
+INCIDENCIA                                                                      
+TABLE                   VALID                                                   
+                                                                                
+SUCURSAL                                                                        
+TABLE                   VALID                                                   
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+DEPARTAMENTO                                                                    
+TABLE                   VALID                                                   
+                                                                                
+EMPLEADO                                                                        
+TABLE                   VALID                                                   
+                                                                                
+PUESTO_PK                                                                       
+INDEX                   VALID                                                   
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+PUESTO                                                                          
+TABLE                   VALID                                                   
+                                                                                
+PUESTO_CLAVE_UK                                                                 
+INDEX                   VALID                                                   
+                                                                                
+PUESTO_TC                                                                       
+TABLE                   VALID                                                   
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS                                                  
+----------------------- -------                                                 
+PUESTO_TC_PK                                                                    
+INDEX                   VALID                                                   
+                                                                                
+PUESTO_TC_CLAVE_UK                                                              
+INDEX                   VALID                                                   
+                                                                                
+
+17 rows selected.
+
+NESTOR0307-SQL> list 1
+  1* select object_name, object_type, status
+NESTOR0307-SQL> c /status/status, created
+  1* select object_name, object_type, status, created
+NESTOR0307-SQL> run
+  1  select object_name, object_type, status, created
+  2  from user_objects
+  3* 
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+EMPLEADO_SIMPLE                                                                 
+TABLE                   VALID   20-MAR-20                                       
+                                                                                
+EMPLEADO_EXT                                                                    
+TABLE                   VALID   20-MAR-20                                       
+                                                                                
+CALCULO_SUELDO                                                                  
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+EMPLEADO_EXT2                                                                   
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+EMPLEADO_TEMP                                                                   
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+EMPLEADO2_TEMP                                                                  
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+CALCULO_SUELDO_COPIA                                                            
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+INCIDENCIA                                                                      
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+SUCURSAL                                                                        
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+DEPARTAMENTO                                                                    
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+EMPLEADO                                                                        
+TABLE                   VALID   24-MAR-20                                       
+                                                                                
+PUESTO_PK                                                                       
+INDEX                   VALID   26-MAR-20                                       
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+PUESTO                                                                          
+TABLE                   VALID   26-MAR-20                                       
+                                                                                
+PUESTO_CLAVE_UK                                                                 
+INDEX                   VALID   26-MAR-20                                       
+                                                                                
+PUESTO_TC                                                                       
+TABLE                   VALID   26-MAR-20                                       
+                                                                                
+
+OBJECT_NAME                                                                     
+--------------------------------------------------------------------------------
+OBJECT_TYPE             STATUS  CREATED                                         
+----------------------- ------- ------------------                              
+PUESTO_TC_PK                                                                    
+INDEX                   VALID   26-MAR-20                                       
+                                                                                
+PUESTO_TC_CLAVE_UK                                                              
+INDEX                   VALID   26-MAR-20                                       
+                                                                                
+
+17 rows selected.
+
+NESTOR0307-SQL> col object_name format a20
+NESTOR0307-SQL> run
+  1  select object_name, object_type, status, created
+  2  from user_objects
+  3* 
+
+OBJECT_NAME          OBJECT_TYPE             STATUS  CREATED                    
+-------------------- ----------------------- ------- ------------------         
+EMPLEADO_SIMPLE      TABLE                   VALID   20-MAR-20                  
+EMPLEADO_EXT         TABLE                   VALID   20-MAR-20                  
+CALCULO_SUELDO       TABLE                   VALID   24-MAR-20                  
+EMPLEADO_EXT2        TABLE                   VALID   24-MAR-20                  
+EMPLEADO_TEMP        TABLE                   VALID   24-MAR-20                  
+EMPLEADO2_TEMP       TABLE                   VALID   24-MAR-20                  
+CALCULO_SUELDO_COPIA TABLE                   VALID   24-MAR-20                  
+INCIDENCIA           TABLE                   VALID   24-MAR-20                  
+SUCURSAL             TABLE                   VALID   24-MAR-20                  
+DEPARTAMENTO         TABLE                   VALID   24-MAR-20                  
+EMPLEADO             TABLE                   VALID   24-MAR-20                  
+
+OBJECT_NAME          OBJECT_TYPE             STATUS  CREATED                    
+-------------------- ----------------------- ------- ------------------         
+PUESTO_PK            INDEX                   VALID   26-MAR-20                  
+PUESTO               TABLE                   VALID   26-MAR-20                  
+PUESTO_CLAVE_UK      INDEX                   VALID   26-MAR-20                  
+PUESTO_TC            TABLE                   VALID   26-MAR-20                  
+PUESTO_TC_PK         INDEX                   VALID   26-MAR-20                  
+PUESTO_TC_CLAVE_UK   INDEX                   VALID   26-MAR-20                  
+
+17 rows selected.
+
+NESTOR0307-SQL> set pagesize 50
+NESTOR0307-SQL> run
+  1  select object_name, object_type, status, created
+  2  from user_objects
+  3* 
+
+OBJECT_NAME          OBJECT_TYPE             STATUS  CREATED                    
+-------------------- ----------------------- ------- ------------------         
+EMPLEADO_SIMPLE      TABLE                   VALID   20-MAR-20                  
+EMPLEADO_EXT         TABLE                   VALID   20-MAR-20                  
+CALCULO_SUELDO       TABLE                   VALID   24-MAR-20                  
+EMPLEADO_EXT2        TABLE                   VALID   24-MAR-20                  
+EMPLEADO_TEMP        TABLE                   VALID   24-MAR-20                  
+EMPLEADO2_TEMP       TABLE                   VALID   24-MAR-20                  
+CALCULO_SUELDO_COPIA TABLE                   VALID   24-MAR-20                  
+INCIDENCIA           TABLE                   VALID   24-MAR-20                  
+SUCURSAL             TABLE                   VALID   24-MAR-20                  
+DEPARTAMENTO         TABLE                   VALID   24-MAR-20                  
+EMPLEADO             TABLE                   VALID   24-MAR-20                  
+PUESTO_PK            INDEX                   VALID   26-MAR-20                  
+PUESTO               TABLE                   VALID   26-MAR-20                  
+PUESTO_CLAVE_UK      INDEX                   VALID   26-MAR-20                  
+PUESTO_TC            TABLE                   VALID   26-MAR-20                  
+PUESTO_TC_PK         INDEX                   VALID   26-MAR-20                  
+PUESTO_TC_CLAVE_UK   INDEX                   VALID   26-MAR-20                  
+
+17 rows selected.
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> prompt 1.12
+1.12
+NESTOR0307-SQL> prompt 1.10
+1.10
+NESTOR0307-SQL> desc puesto
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PUESTO_ID                                 NOT NULL NUMBER(2)
+ NIVEL                                     NOT NULL CHAR(1)
+ CLAVE                                     NOT NULL VARCHAR2(3)
+ SUELDO                                    NOT NULL NUMBER(8,2)
+
+NESTOR0307-SQL> create table empleado(
+  2  empleado_id number(10,0),
+  3  nombre varchar2(40) not null,
+  4  puesto_id not null constarint empleado_puesto_id_fk references puesto(puesto_id),
+  5  constraint empleado_id_pk primary key (empleado_id)
+  6  );
+puesto_id not null constarint empleado_puesto_id_fk references puesto(puesto_id),
+                   *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+NESTOR0307-SQL> l 4
+  4* puesto_id not null constarint empleado_puesto_id_fk references puesto(puesto_id),
+NESTOR0307-SQL> c /constarint/constraint
+  4* puesto_id not null constraint empleado_puesto_id_fk references puesto(puesto_id),
+NESTOR0307-SQL> run
+  1  create table empleado(
+  2  empleado_id number(10,0),
+  3  nombre varchar2(40) not null,
+  4  puesto_id not null constraint empleado_puesto_id_fk references puesto(puesto_id),
+  5  constraint empleado_id_pk primary key (empleado_id)
+  6* )
+create table empleado(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+NESTOR0307-SQL> drop table empleado
+  2  ;
+
+Table dropped.
+
+NESTOR0307-SQL> run
+  1  drop table empleado
+  2* 
+drop table empleado
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> create table empleado(
+  2  empleado_id number(10,0) constraint empleado_pk primary key,
+  3  nombre varchar2(40) not null,
+  4  puesto_id constraint empleado_puesto_id_fk references puesto(puesto_id)
+  5  );
+
+Table created.
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> create table empleado_tc(
+  2  empleado_id number(10,0),
+  3  nombre varchar2(40),
+  4  puesto_id number(2,0),
+  5  constraint empleado_id_pk primary key (empleado_id),
+  6  constraint empleado_tc_puesto_id_fk foreign key (puesto_id) references puesto(puesto_id),
+  7  constraint nombre_nn check (nombre is not null),
+  8  constraint puesto_id_nn check (puesto_id is not null)
+  9  );
+
+Table created.
+
+NESTOR0307-SQL> desc empleado_tc
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLEADO_ID                               NOT NULL NUMBER(10)
+ NOMBRE                                             VARCHAR2(40)
+ PUESTO_ID                                          NUMBER(2)
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> prompt 1.12
+1.12
+NESTOR0307-SQL> create table pensionada(
+  2  pensionada_id number(10,0) constraint pensionada_pk primary key,
+  3  nombre varchar2(40) not null
+  4  );
+
+Table created.
+
+NESTOR0307-SQL> create table pensionada_empleado(
+  2  	pensionada_id number(10,0) constraint pensionada_empleado_pensionada_id_fk references pensionada(pensionada_id),
+  3  	empleado_id number(10,0),
+  4  	porcentaje number(5,2)l
+  5  
+NESTOR0307-SQL> l 4
+  4* 	porcentaje number(5,2)l
+NESTOR0307-SQL> c /porcentaje number(5,2)l/porcentaje number(5,2) not null,
+  4* 	porcentaje number(5,2) not null,
+NESTOR0307-SQL> l 3
+  3* 	empleado_id number(10,0),
+NESTOR0307-SQL> c /,/ not null,
+  3* 	empleado_id number(10 not null,0),
+NESTOR0307-SQL> c empleado_id number(10 not null,0),/empleado_id number(10,0) not null,
+  3* 	eado_id numbeado_id number(10 not null,0),
+NESTOR0307-SQL> c /eado_id numbeado_id number(10 not null,0),/empleado_id number(10,0) not null,
+  3* 	empleado_id number(10,0) not null,
+NESTOR0307-SQL> i
+  4i contraint pensionada_empleado_empleado_id_fk foreign key (empleado_id) references empleado(empleado_id),
+  5i constraint pensionada_empleado_pk primary key (pensionada_id, empleado_id)
+  6i );
+contraint pensionada_empleado_empleado_id_fk foreign key (empleado_id) references empleado(empleado_id),
+                                             *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+NESTOR0307-SQL> list
+  1  create table pensionada_empleado(
+  2  	pensionada_id number(10,0) constraint pensionada_empleado_pensionada_id_fk references pensionada(pensionada_id),
+  3  	empleado_id number(10,0) not null,
+  4  contraint pensionada_empleado_empleado_id_fk foreign key (empleado_id) references empleado(empleado_id),
+  5  constraint pensionada_empleado_pk primary key (pensionada_id, empleado_id)
+  6  );
+  7* 	porcentaje number(5,2) not null
+NESTOR0307-SQL> drop table pensionada_empleado;
+drop table pensionada_empleado
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> create table pensionada_empleado(
+  2  pensionada_empleado_id number(10,0) constraint pensionada_empleado_pk primary key,
+  3  pensionada_id number(10,0) constraint pensionada_empleado_pensionada_id_fk references pensionada(pensionda_id),
+  4  empleado_id number(10,0),
+  5  porcentaje number(5,2) not null,
+  6  constraint pensionada_empleado_empleado_id_fk foreign key (empleado_id) refences empleado(empleado_id),
+  7  constr
+  8  
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create table pensionada_empleado(
+  2  pensionada_id number(10,0) constraint pensionada_empleado_pensionada_id_fk references pensionada(pensionada_id),
+  3  empleado_id number(10,0),
+  4  porcentaje number(5,2) not null,
+  5  constraint pensionada_empleado_empleado_id_fk foreign key (empleado_id) references empleado(empleado_id),
+  6  constraint pensionada_empleado_pk primary key (pensionada_id, empleado_id)
+  7  );
+
+Table created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> prompt 1.13
+1.13
+NESTOR0307-SQL> prompt b) tarea
+b) tarea
+NESTOR0307-SQL> create table quincena (
+  2  quincena_id number(2,0) constraint quincena_pk primary key,
+  3  clave varchar2(3) not null
+  4  );
+
+Table created.
+
+NESTOR0307-SQL> desc quincena
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ QUINCENA_ID                               NOT NULL NUMBER(2)
+ CLAVE                                     NOT NULL VARCHAR2(3)
+
+NESTOR0307-SQL> create table nomina (
+  2  nomina_id number(10,0) constraint nomida_id_pk primary key,
+  3  quincena_id constraint nomina_quincena_id_fk references quincena(quincena_id)
+  4  on delete cascade
+  5  );
+
+Table created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
