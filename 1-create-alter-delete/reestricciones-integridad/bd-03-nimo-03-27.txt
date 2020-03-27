@@ -1,0 +1,166 @@
+NESTOR0307-SQL> drop table nomina;
+
+Table dropped.
+
+NESTOR0307-SQL> drop table quincena;
+
+Table dropped.
+
+NESTOR0307-SQL> create table quincena (
+  2  	quincena_id number(2quincenk primary key
+  3  , clave varchar2(3) not null);
+	quincena_id number(2quincenk primary key
+	                    *
+ERROR at line 2:
+ORA-00907: missing right parenthesis 
+
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create table quincena (
+  2  quincena_id number(10,0) constraint quincena_pk primary key,
+  3  clave varchar2(3) not null
+  4  );
+
+Table created.
+
+NESTOR0307-SQL> create table nomina (
+  2  	nomina_id number(10,0) constraint nomina_pk primary key,
+  3  	quincena_id constraint nomina_quincena_id_fk references quincena(quincena_id)
+  4  );
+
+Table created.
+
+NESTOR0307-SQL> drop table nomina
+  2  ;
+
+Table dropped.
+
+NESTOR0307-SQL> create table nomina(
+  2  	nominda_id number(10,0) constraint nomina_pk primary key,
+  3  	quincena_id constraint nomina_quincena_id_fk references quincena(quincena_id)
+  4  	on delete cascade
+  5  );
+
+Table created.
+
+NESTOR0307-SQL> l 2
+  2* 	nominda_id number(10,0) constraint nomina_pk primary key,
+NESTOR0307-SQL> change /nominda/nomina;
+  2* 	nomina_id number(10,0) constraint nomina_pk primary key,
+NESTOR0307-SQL> run
+  1  create table nomina(
+  2  	nomina_id number(10,0) constraint nomina_pk primary key,
+  3  	quincena_id constraint nomina_quincena_id_fk references quincena(quincena_id)
+  4  	on delete cascade
+  5* )
+create table nomina(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> insert into quincena values (1, 'Q01');
+
+1 row created.
+
+NESTOR0307-SQL> insert into nomina values (100, 1);
+
+1 row created.
+
+NESTOR0307-SQL> select * from nomina;
+
+NOMINDA_ID QUINCENA_ID                                                          
+---------- -----------                                                          
+       100           1                                                          
+
+NESTOR0307-SQL> select * from quincena;
+
+QUINCENA_ID CLA                                                                 
+----------- ---                                                                 
+          1 Q01                                                                 
+
+NESTOR0307-SQL> delete from quincena where quincena_id = 1;
+
+1 row deleted.
+
+NESTOR0307-SQL> select * from quincena;
+
+no rows selected
+
+NESTOR0307-SQL> select * from nomina;
+
+no rows selected
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/bd-03-nimo-03-27.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> rollback;
+
+Rollback complete.
+
+NESTOR0307-SQL> select * from quincena;
+
+no rows selected
+
+NESTOR0307-SQL> select * from nomina;
+
+no rows selected
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> drop table nomina;
+
+Table dropped.
+
+NESTOR0307-SQL> create table nomina (
+  2  	nomina_id number(10,0) constraint nomina_pk primary key,
+  3  	quincena_id constraint nomina_quincena_id_fk references quincena(quincena_id) );
+
+Table created.
+
+NESTOR0307-SQL> insert into quincena values (1, 'Q01');
+
+1 row created.
+
+NESTOR0307-SQL> insert into nomina values (100, 1);
+
+1 row created.
+
+NESTOR0307-SQL> select * from quincena;
+
+QUINCENA_ID CLA                                                                 
+----------- ---                                                                 
+          1 Q01                                                                 
+
+NESTOR0307-SQL> select * from nomina;
+
+ NOMINA_ID QUINCENA_ID                                                          
+---------- -----------                                                          
+       100           1                                                          
+
+NESTOR0307-SQL> delete from quincena where quincena_id = 1;
+delete from quincena where quincena_id = 1
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (NESTOR0307.NOMINA_QUINCENA_ID_FK) violated -
+child record found 
+
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/bd-03-nimo-03-27.txt append;
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> drop table quincena;
+drop table quincena
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+NESTOR0307-SQL> drop table nomina;
+
+Table dropped.
+
+NESTOR0307-SQL> drop table quincena;
+
+Table dropped.
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/tarea09-bd-03-nimo-03-27.txt

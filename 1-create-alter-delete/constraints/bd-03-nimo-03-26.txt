@@ -804,3 +804,4 @@ NESTOR0307-SQL> create table nomina (
 Table created.
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/constraints/bd-03-nimo-03-26.txt append
+NESTOR0307-SQL> 
