@@ -1,0 +1,134 @@
+NESTOR0307-SQL> create sequence my_seq
+  2  start with 100
+  3  increment by 10
+  4  maxvalue 1000
+  5  minvalue 50
+  6  cycle
+  7  cache 5;
+
+Sequence created.
+
+NESTOR0307-SQL> select my_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       100                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       110                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       120                                                                      
+
+NESTOR0307-SQL> drop sequence my_seq;
+
+Sequence dropped.
+
+NESTOR0307-SQL> create sequence my_seq
+  2  start with 100
+  3  increment by 100
+  4  maxvalue 1000
+  5  minvalue 50
+  6  cycle
+  7  cache 5;
+
+Sequence created.
+
+NESTOR0307-SQL> select my_seq.nextval from dual;
+
+   NEXTVAL                                                                      
+----------                                                                      
+       100                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       200                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       300                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       400                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       500                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       600                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       700                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       800                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+       900                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+      1000                                                                      
+
+NESTOR0307-SQL> /
+
+   NEXTVAL                                                                      
+----------                                                                      
+        50                                                                      
+
+NESTOR0307-SQL> desc user_sequences;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SEQUENCE_NAME                             NOT NULL VARCHAR2(128)
+ MIN_VALUE                                          NUMBER
+ MAX_VALUE                                          NUMBER
+ INCREMENT_BY                              NOT NULL NUMBER
+ CYCLE_FLAG                                         VARCHAR2(1)
+ ORDER_FLAG                                         VARCHAR2(1)
+ CACHE_SIZE                                NOT NULL NUMBER
+ LAST_NUMBER                               NOT NULL NUMBER
+ SCALE_FLAG                                         VARCHAR2(1)
+ EXTEND_FLAG                                        VARCHAR2(1)
+ SESSION_FLAG                                       VARCHAR2(1)
+ KEEP_VALUE                                         VARCHAR2(1)
+
+NESTOR0307-SQL> col sequence_name format a20
+NESTOR0307-SQL> select sequence_name, min_value, max_value, increment_by, cycle_flag, cache_size from user_sequences;
+
+SEQUENCE_NAME         MIN_VALUE  MAX_VALUE INCREMENT_BY C CACHE_SIZE            
+-------------------- ---------- ---------- ------------ - ----------            
+ISEQ$$_74323                  1 1.0000E+28            1 N         20            
+ISEQ$$_74325                  1       1000            3 N          4            
+MY_SEQ                       50       1000          100 Y          5            
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/sequences/bd-03-nimo-04-02.txt append
