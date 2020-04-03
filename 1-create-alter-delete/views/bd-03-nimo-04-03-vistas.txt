@@ -1,0 +1,78 @@
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+NESTOR0307-SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+--------------------------------------------------------------------------------
+EJEMPLO_IDENTITY                                                                
+BOLETO_IDENTITY                                                                 
+SALON                                                                           
+CLIENTE                                                                         
+BOLETO                                                                          
+EJEMPLO_FECHAS                                                                  
+EMPLEADO_SIMPLE                                                                 
+EMPLEADO_EXT                                                                    
+CALCULO_SUELDO                                                                  
+EMPLEADO_EXT2                                                                   
+EMPLEADO_TEMP                                                                   
+
+TABLE_NAME                                                                      
+--------------------------------------------------------------------------------
+EMPLEADO2_TEMP                                                                  
+CALCULO_SUELDO_COPIA                                                            
+INCIDENCIA                                                                      
+SUCURSAL                                                                        
+DEPARTAMENTO                                                                    
+PUESTO                                                                          
+PUESTO_TC                                                                       
+EMPLEADO                                                                        
+EMPLEADO_TC                                                                     
+PENSIONADA                                                                      
+PENSIONADA_EMPLEADO                                                             
+
+TABLE_NAME                                                                      
+--------------------------------------------------------------------------------
+NOMINA                                                                          
+QUINCENA                                                                        
+
+24 rows selected.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> connect system as sysdba;
+ERROR:
+ORA-01017: invalid username/password; logon denied
+ORA-27046: file size is not a multiple of logical block size
+Additional information: 1 
+
+
+Warning: You are no longer connected to ORACLE.
+-SQL> connect system/system as sysdba;
+ERROR:
+ORA-01017: invalid username/password; logon denied
+ORA-27046: file size is not a multiple of logical block size
+Additional information: 1 
+
+
+-SQL> exit
+SYSTEM-SQL> grant create view to nestor0307;
+
+Grant succeeded.
+
+SYSTEM-SQL> connect nestor0307
+Connected.
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create or replace view v_empleado as
+  2  select e.empleado_id, e.nombre, pe.porcentaje from
+  3  empleado e, pensionada_empleado pe
+  4  where e.empleado_id = pe.empleado_id;
+
+View created.
+
+NESTOR0307-SQL> select * from v_empleado;
+
+no rows selected
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
