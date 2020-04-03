@@ -87,3 +87,326 @@ NESTOR0307-SQL> desc boleto;
  FECHA_COMPRA                              NOT NULL DATE
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/indexes/bd-03-nimo-04-03.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+------------------                                                              
+03-APR-20                                                                       
+
+NESTOR0307-SQL> select sysdate to date 'mm' from dual;
+select sysdate to date 'mm' from dual
+               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+NESTOR0307-SQL> select to_date(sysdate, 'mm') from dual;
+select to_date(sysdate, 'mm') from dual
+               *
+ERROR at line 1:
+ORA-01830: date format picture ends before converting entire input string 
+
+
+NESTOR0307-SQL> select to_date(sysdate, 'YYYY/MM/DD') from dual;
+
+TO_DATE(SYSDATE,'Y                                                              
+------------------                                                              
+20-APR-03                                                                       
+
+NESTOR0307-SQL> select to_char(sysdate, 'YYYY/MM/DD') from dual;
+
+TO_CHAR(SY                                                                      
+----------                                                                      
+2020/04/03                                                                      
+
+NESTOR0307-SQL> select to_char(sysdate, 'YYYY/MM') from dual;
+
+TO_CHAR                                                                         
+-------                                                                         
+2020/04                                                                         
+
+NESTOR0307-SQL> select * from boleto to_char(fecha_compra, 'YYYY/MM');
+select * from boleto to_char(fecha_compra, 'YYYY/MM')
+                            *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+NESTOR0307-SQL> select * from boleto where to_char(fecha_compra, 'YYYY/MM') = '2020/01':
+  2  ;
+select * from boleto where to_char(fecha_compra, 'YYYY/MM') = '2020/01':
+                                                                       *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+NESTOR0307-SQL> l1
+  1* select * from boleto where to_char(fecha_compra, 'YYYY/MM') = '2020/01':
+NESTOR0307-SQL> edit /:/
+
+NESTOR0307-SQL> edit
+SP2-0110: Cannot create save file "afiedt.buf"
+NESTOR0307-SQL> edit afield.buf
+
+NESTOR0307-SQL> edit afieldt.buf
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create index boleto_fecha_compra_ix on boleto(to_char(fecha_compra, 'YYYY/MM'));
+
+Index created.
+
+NESTOR0307-SQL> create table ejemplo_fechas( fecha date );
+
+Table created.
+
+NESTOR0307-SQL> insert into ejemplo_fechas values (sysdate);
+
+1 row created.
+
+NESTOR0307-SQL> select * from ejemplo_fechas;
+
+FECHA                                                                           
+------------------                                                              
+03-APR-20                                                                       
+
+NESTOR0307-SQL> insert into ejemplo_fechas(fecha) values (to_date('01/01/2020'));
+insert into ejemplo_fechas(fecha) values (to_date('01/01/2020'))
+                                                  *
+ERROR at line 1:
+ORA-01843: not a valid month 
+
+
+NESTOR0307-SQL> insert into ejemplo_fechas values (to_date('01/01/2020', 'DD/MM/YYYY'));
+
+1 row created.
+
+NESTOR0307-SQL> select * from ejemplo_fechas;
+
+FECHA                                                                           
+------------------                                                              
+03-APR-20                                                                       
+01-JAN-20                                                                       
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/indexes/bd-03-nimo-04-03.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> desc user_indexes;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ INDEX_NAME                                NOT NULL VARCHAR2(128)
+ INDEX_TYPE                                         VARCHAR2(27)
+ TABLE_OWNER                               NOT NULL VARCHAR2(128)
+ TABLE_NAME                                NOT NULL VARCHAR2(128)
+ TABLE_TYPE                                         VARCHAR2(11)
+ UNIQUENESS                                         VARCHAR2(9)
+ COMPRESSION                                        VARCHAR2(13)
+ PREFIX_LENGTH                                      NUMBER
+ TABLESPACE_NAME                                    VARCHAR2(30)
+ INI_TRANS                                          NUMBER
+ MAX_TRANS                                          NUMBER
+ INITIAL_EXTENT                                     NUMBER
+ NEXT_EXTENT                                        NUMBER
+ MIN_EXTENTS                                        NUMBER
+ MAX_EXTENTS                                        NUMBER
+ PCT_INCREASE                                       NUMBER
+ PCT_THRESHOLD                                      NUMBER
+ INCLUDE_COLUMN                                     NUMBER
+ FREELISTS                                          NUMBER
+ FREELIST_GROUPS                                    NUMBER
+ PCT_FREE                                           NUMBER
+ LOGGING                                            VARCHAR2(3)
+ BLEVEL                                             NUMBER
+ LEAF_BLOCKS                                        NUMBER
+ DISTINCT_KEYS                                      NUMBER
+ AVG_LEAF_BLOCKS_PER_KEY                            NUMBER
+ AVG_DATA_BLOCKS_PER_KEY                            NUMBER
+ CLUSTERING_FACTOR                                  NUMBER
+ STATUS                                             VARCHAR2(8)
+ NUM_ROWS                                           NUMBER
+ SAMPLE_SIZE                                        NUMBER
+ LAST_ANALYZED                                      DATE
+ DEGREE                                             VARCHAR2(40)
+ INSTANCES                                          VARCHAR2(40)
+ PARTITIONED                                        VARCHAR2(3)
+ TEMPORARY                                          VARCHAR2(1)
+ GENERATED                                          VARCHAR2(1)
+ SECONDARY                                          VARCHAR2(1)
+ BUFFER_POOL                                        VARCHAR2(7)
+ FLASH_CACHE                                        VARCHAR2(7)
+ CELL_FLASH_CACHE                                   VARCHAR2(7)
+ USER_STATS                                         VARCHAR2(3)
+ DURATION                                           VARCHAR2(15)
+ PCT_DIRECT_ACCESS                                  NUMBER
+ ITYP_OWNER                                         VARCHAR2(128)
+ ITYP_NAME                                          VARCHAR2(128)
+ PARAMETERS                                         VARCHAR2(1000)
+ GLOBAL_STATS                                       VARCHAR2(3)
+ DOMIDX_STATUS                                      VARCHAR2(12)
+ DOMIDX_OPSTATUS                                    VARCHAR2(6)
+ FUNCIDX_STATUS                                     VARCHAR2(8)
+ JOIN_INDEX                                         VARCHAR2(3)
+ IOT_REDUNDANT_PKEY_ELIM                            VARCHAR2(3)
+ DROPPED                                            VARCHAR2(3)
+ VISIBILITY                                         VARCHAR2(9)
+ DOMIDX_MANAGEMENT                                  VARCHAR2(14)
+ SEGMENT_CREATED                                    VARCHAR2(3)
+ ORPHANED_ENTRIES                                   VARCHAR2(3)
+ INDEXING                                           VARCHAR2(7)
+
+NESTOR0307-SQL> select index_name, index_type, uniqueness from user_indexes;
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+PUESTO_PK                                                                       
+NORMAL                      UNIQUE                                              
+                                                                                
+PUESTO_CLAVE_UK                                                                 
+NORMAL                      UNIQUE                                              
+                                                                                
+PUESTO_TC_PK                                                                    
+NORMAL                      UNIQUE                                              
+                                                                                
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+PUESTO_TC_CLAVE_UK                                                              
+NORMAL                      UNIQUE                                              
+                                                                                
+EMPLEADO_PK                                                                     
+NORMAL                      UNIQUE                                              
+                                                                                
+EMPLEADO_ID_PK                                                                  
+NORMAL                      UNIQUE                                              
+                                                                                
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+PENSIONADA_PK                                                                   
+NORMAL                      UNIQUE                                              
+                                                                                
+PENSIONADA_EMPLEADO_PK                                                          
+NORMAL                      UNIQUE                                              
+                                                                                
+QUINCENA_PK                                                                     
+NORMAL                      UNIQUE                                              
+                                                                                
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+NOMINA_PK                                                                       
+NORMAL                      UNIQUE                                              
+                                                                                
+SALON_PK                                                                        
+NORMAL                      UNIQUE                                              
+                                                                                
+CLIENTE_PK                                                                      
+NORMAL                      UNIQUE                                              
+                                                                                
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+CLIENTE_INDEX_IX                                                                
+FUNCTION-BASED NORMAL       NONUNIQUE                                           
+                                                                                
+BOLETO_PK                                                                       
+NORMAL                      UNIQUE                                              
+                                                                                
+BOLETO_UK                                                                       
+NORMAL                      UNIQUE                                              
+                                                                                
+
+INDEX_NAME                                                                      
+--------------------------------------------------------------------------------
+INDEX_TYPE                  UNIQUENES                                           
+--------------------------- ---------                                           
+CLIENTE_ID_IX                                                                   
+NORMAL                      NONUNIQUE                                           
+                                                                                
+BOLETO_FECHA_COMPRA_IX                                                          
+FUNCTION-BASED NORMAL       NONUNIQUE                                           
+                                                                                
+
+17 rows selected.
+
+NESTOR0307-SQL> col index_name format a20
+NESTOR0307-SQL> /
+
+INDEX_NAME           INDEX_TYPE                  UNIQUENES                      
+-------------------- --------------------------- ---------                      
+PUESTO_PK            NORMAL                      UNIQUE                         
+PUESTO_CLAVE_UK      NORMAL                      UNIQUE                         
+PUESTO_TC_PK         NORMAL                      UNIQUE                         
+PUESTO_TC_CLAVE_UK   NORMAL                      UNIQUE                         
+EMPLEADO_PK          NORMAL                      UNIQUE                         
+EMPLEADO_ID_PK       NORMAL                      UNIQUE                         
+PENSIONADA_PK        NORMAL                      UNIQUE                         
+PENSIONADA_EMPLEADO_ NORMAL                      UNIQUE                         
+PK                                                                              
+                                                                                
+QUINCENA_PK          NORMAL                      UNIQUE                         
+
+INDEX_NAME           INDEX_TYPE                  UNIQUENES                      
+-------------------- --------------------------- ---------                      
+NOMINA_PK            NORMAL                      UNIQUE                         
+SALON_PK             NORMAL                      UNIQUE                         
+CLIENTE_PK           NORMAL                      UNIQUE                         
+BOLETO_PK            NORMAL                      UNIQUE                         
+BOLETO_UK            NORMAL                      UNIQUE                         
+CLIENTE_ID_IX        NORMAL                      NONUNIQUE                      
+CLIENTE_INDEX_IX     FUNCTION-BASED NORMAL       NONUNIQUE                      
+BOLETO_FECHA_COMPRA_ FUNCTION-BASED NORMAL       NONUNIQUE                      
+IX                                                                              
+                                                                                
+
+17 rows selected.
+
+NESTOR0307-SQL> select index_name, index_type, uniqueness
+  2  from user_tables
+  3  where table_name = 'BOLETO';
+select index_name, index_type, uniqueness
+                               *
+ERROR at line 1:
+ORA-00904: "UNIQUENESS": invalid identifier 
+
+
+NESTOR0307-SQL> select index_name, index_type, uniqueness from user_tables where table_name = 'BOLETO':
+  2  ;
+select index_name, index_type, uniqueness from user_tables where table_name = 'BOLETO':
+                                                                                      *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+NESTOR0307-SQL> select index_name, index_type, uniqueness from user_tables where table_name = 'BOLETO';
+select index_name, index_type, uniqueness from user_tables where table_name = 'BOLETO'
+                               *
+ERROR at line 1:
+ORA-00904: "UNIQUENESS": invalid identifier 
+
+
+NESTOR0307-SQL> select index_name, index_type, uniqueness
+  2  from user_indexes
+  3  where table_name = 'BOLETO';
+
+INDEX_NAME           INDEX_TYPE                  UNIQUENES                      
+-------------------- --------------------------- ---------                      
+BOLETO_PK            NORMAL                      UNIQUE                         
+BOLETO_UK            NORMAL                      UNIQUE                         
+CLIENTE_ID_IX        NORMAL                      NONUNIQUE                      
+BOLETO_FECHA_COMPRA_ FUNCTION-BASED NORMAL       NONUNIQUE                      
+IX                                                                              
+                                                                                
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/indexes/bd-03-nimo-04-03.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool off
