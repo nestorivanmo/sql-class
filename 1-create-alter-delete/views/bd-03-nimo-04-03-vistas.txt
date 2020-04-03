@@ -76,3 +76,58 @@ NESTOR0307-SQL> select * from v_empleado;
 no rows selected
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+NESTOR0307-SQL> desc v_empleado;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLEADO_ID                               NOT NULL NUMBER(10)
+ NOMBRE                                    NOT NULL VARCHAR2(40)
+ PORCENTAJE                                NOT NULL NUMBER(5,2)
+
+NESTOR0307-SQL> insert into pensionada values (1, 'Teresa');
+
+1 row created.
+
+NESTOR0307-SQL> desc puesto;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PUESTO_ID                                 NOT NULL NUMBER(2)
+ NIVEL                                     NOT NULL CHAR(1)
+ CLAVE                                     NOT NULL VARCHAR2(3)
+ SUELDO                                    NOT NULL NUMBER(8,2)
+
+NESTOR0307-SQL> insert into puesto values (1,'a', 'p01', 45000);
+
+1 row created.
+
+NESTOR0307-SQL> desc empleado;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLEADO_ID                               NOT NULL NUMBER(10)
+ NOMBRE                                    NOT NULL VARCHAR2(40)
+ PUESTO_ID                                          NUMBER(2)
+
+NESTOR0307-SQL> insert into empleado values (100, 'Sancho', 1);
+
+1 row created.
+
+NESTOR0307-SQL> desc pensionada_empleado;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PENSIONADA_ID                             NOT NULL NUMBER(10)
+ EMPLEADO_ID                               NOT NULL NUMBER(10)
+ PORCENTAJE                                NOT NULL NUMBER(5,2)
+
+NESTOR0307-SQL> insert into pensionada_empleado values (1,100,15);
+
+1 row created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+NESTOR0307-SQL> select * from v_empleado;
+
+EMPLEADO_ID NOMBRE                                   PORCENTAJE                 
+----------- ---------------------------------------- ----------                 
+        100 Sancho                                           15                 
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/views/bd-03-nimo-04-03-vistas.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool off
