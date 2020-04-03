@@ -132,3 +132,13 @@ ISEQ$$_74325                  1       1000            3 N          4
 MY_SEQ                       50       1000          100 Y          5            
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/sequences/bd-03-nimo-04-02.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> drop table boleto_id;
+drop table boleto_id
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> exit

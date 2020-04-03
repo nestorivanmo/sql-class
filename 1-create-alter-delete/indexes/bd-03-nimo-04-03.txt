@@ -1,0 +1,89 @@
+SYSTEM-SQL> connect nestor0307;
+Connected.
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create table salon (
+  2  salon_id number(10,0) constraint salon_pk primary key,
+  3  );
+)
+*
+ERROR at line 3:
+ORA-00904: : invalid identifier 
+
+
+NESTOR0307-SQL> create table salon (
+  2  salon_id number(10,0) constraint salon_pk primary key
+  3  );
+
+Table created.
+
+NESTOR0307-SQL> ocreate table cliente (
+SP2-0734: unknown command beginning "ocreate ta..." - rest of line ignored.
+NESTOR0307-SQL> create table cliente (
+  2  cliente_id number(10,0) constraint cliente_pk primary key,
+  3  nombre varchar2(20) not null
+  4  );
+
+Table created.
+
+NESTOR0307-SQL> create table boleto (
+  2  boleto_id number(10,0) constraint boleto_pk primary key,
+  3  num_asiento number(5,0) not null,
+  4  seccion varchar2(5) not null,
+  5  salon_id not null constraint boleto_salon_id_fk references
+  6  salon (salon_id),
+  7  cliente_id not null constraint boleto_cliente_id_fk references
+  8  cliente (cliente_id)
+  9  );
+
+Table created.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/indexes/bd-03-nimo-04-03.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> create index  boleto_uk on boleto (num_asiento, seccion, salon_id);
+
+Index created.
+
+NESTOR0307-SQL> drop boleto_uk;
+drop boleto_uk
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option 
+
+
+NESTOR0307-SQL> drop index boleto_uk;
+
+Index dropped.
+
+NESTOR0307-SQL> create unique index boleto_uk on boleto (num_asiento, seccion, salon_id);
+
+Index created.
+
+NESTOR0307-SQL> create index cliente_id_ix on boleto (cliente_id);
+
+Index created.
+
+NESTOR0307-SQL> select * from cliente where lower(nombre) = 'juan';
+
+no rows selected
+
+NESTOR0307-SQL> create index cliente_index_ix on cliente ( lower(nombre) );
+
+Index created.
+
+NESTOR0307-SQL> alter table boleto add fecha_compra date not null;
+
+Table altered.
+
+NESTOR0307-SQL> ddesc boleto;
+SP2-0734: unknown command beginning "ddesc bole..." - rest of line ignored.
+NESTOR0307-SQL> desc boleto;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ BOLETO_ID                                 NOT NULL NUMBER(10)
+ NUM_ASIENTO                               NOT NULL NUMBER(5)
+ SECCION                                   NOT NULL VARCHAR2(5)
+ SALON_ID                                  NOT NULL NUMBER(10)
+ CLIENTE_ID                                NOT NULL NUMBER(10)
+ FECHA_COMPRA                              NOT NULL DATE
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/indexes/bd-03-nimo-04-03.txt append
