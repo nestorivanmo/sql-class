@@ -1,0 +1,682 @@
+NESTOR0307-SQL> SELECT COUNT(*) FROM EMPLEADO
+  2  UNION
+  3  SELECT COUNT(*) FROM SUCURSAL
+  4  UNION
+  5  SELECT COUNT(*) FROM DEPARTAMENTO;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         5                                                                      
+         6                                                                      
+        72                                                                      
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/lab-bd/practica8/descripcion.txt append
+NESTOR0307-SQL> select  from empleado;
+select  from empleado
+        *
+ERROR at line 1:
+ORA-00936: missing expression 
+
+
+NESTOR0307-SQL> select * from empleado;
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10311 JONATHAN NOE                   GALLARDO VILLEGAS                     
+                 4781          1               2                                
+                                                                                
+     10312 ARTURO                         GARCIA GARAY                          
+                 3569          2               1                                
+                                                                                
+     10313 LUIS EDUARDO                   GONZALEZ APONTE                       
+                 3087          3               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10314 CARLOS ALBERTO                 GONZALEZ GARCIA                       
+                 3487          4               5                                
+                                                                                
+     10315 CARLOS ALBERTO                 GONZALEZ SANCHEZ                      
+                 3064          5               1                                
+                                                                                
+     10316 DIEGO ALAN                     HERNANDEZ GUTIERREZ                   
+                 4378          6                                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10317 JORGE OMAR                     HERNANDEZ LUNA                        
+                 4690          7               1                                
+                                                                                
+     10318 ALEJANDRO                      IZQUIERDO ALVARADO                    
+     10311       3864          7               3                                
+                                                                                
+     10319 VICTOR HUGO                    MAGOS JIMENEZ                         
+     10315       4239                          2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10320 ABRAHAM                        MEDINA DUQUE                          
+     10312       3020          3               1                                
+                                                                                
+     10321 CLAUDIA ANDREA                 MEDINA MURUETA                        
+     10313       3272          4               1                                
+                                                                                
+     10322 CARLOS AXEL                    MENDOZA REBOLLO                       
+     10312       4020          3               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10323 LUIS FERNANDO                  NAVA DOMINGUEZ                        
+     10314       3715          3                                                
+                                                                                
+     10324 SERGIO SALVADOR                NEAVE ARANA                           
+     10315       3882          5               4                                
+                                                                                
+     10325 JAQUELINE                      PIÃ‘A CASTILLO                        
+     10316       3930          3                                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10326 ADRIAN                         RAMIREZ MUÃ‘OZ                        
+     10316       4851          3               5                                
+                                                                                
+     10327 CARLOS DAVID                   RAMIREZ REYES                         
+     10315       4989          2               4                                
+                                                                                
+     10328 CHRISTOPHER ALEXANDER          REYES ADUNA                           
+     10315       4153          1               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10329 GRECIA DENISSE                 RODRIGUEZ CASTRO                      
+     10312       3353          5               5                                
+                                                                                
+     10330 ROGELIO                        RODRIGUEZ LOPEZ                       
+     10315       4020          1               3                                
+                                                                                
+     10331 EMMANUEL                       SANCHEZ OLIVARES                      
+     10312       3068          7               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10332 JENNIFER DAFNE                 SANTOS CRUZ                           
+     10314       3081          6               4                                
+                                                                                
+     10333 MONICA VALERIA                 VALVERDE CHAVEZ                       
+     10314       3964          6                                                
+                                                                                
+     10334 MARLON                         VERA DIAZ                             
+     10311       4550          7               5                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10335 RODRIGO                        ZAVALA RODRIGUEZ                      
+     10313       4724          2               5                                
+                                                                                
+     10336 LUIS ESTEBAN                   AGUILAR ESCUTIA                       
+     10315       3313          4               2                                
+                                                                                
+     10337 JULIO                          AGUILAR ONOFRE                        
+     10311       4065          4               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10338 JORGE GABRIEL                  ALCANTARA PEREZ                       
+     10315       4198          5               5                                
+                                                                                
+     10339 ARTURO                         ALVAREZ CHAVEZ                        
+     10311       4864          7               1                                
+                                                                                
+     10340 HERADIO JAVIER                 ALVAREZ LOPEZ                         
+     10313       4083          2               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10341 JUAN IRVING                    AVILES TABARES                        
+     10313       4188          4               1                                
+                                                                                
+     10342 OMAR YAIR                      BALDERAS MATA                         
+     10313       3187          1               2                                
+                                                                                
+     10343 MARCOS ANTONIO                 BARCENAS GARCIA                       
+     10314       3093          1               5                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10344 ARGELIA ELIZABETH              BARRERA DURAN                         
+     10316       3650          6               2                                
+                                                                                
+     10345 JOVANY                         CALDERON PACHECO                      
+     10312       3047          3               3                                
+                                                                                
+     10346 RAMON                          CORTES RUIZ                           
+     10316       3286          3                                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10347 LUIS ENRIQUE                   DE LA ROSA MEJIA                      
+     10311       3311                          1                                
+                                                                                
+     10348 JOSUE TADEO                    DIAZ MONROY                           
+     10313       3885          3               4                                
+                                                                                
+     10349 EDMUNDO ISMAEL                 FRAGOSO ARIZA                         
+     10312       3297          5               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10350 BRYAN                          GALICIA FALCON                        
+     10316       3864          2               5                                
+                                                                                
+     10351 DAFNE YARETZI                  GIRON REYES                           
+     10316       4833          1               1                                
+                                                                                
+     10352 NOE                            GOMEZ MARIN                           
+     10317       4690          5               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10353 CARLOS ENRIQUE                 GONZALEZ HERNANDEZ                    
+     10317       3754          2               3                                
+                                                                                
+     10354 SANDRA IVETTE                  GONZALEZ ROCHA                        
+     10317       4428          7                                                
+                                                                                
+     10355 ISRAEL                         GONZALEZ SANCHEZ                      
+     10317       3742          3               5                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10356 BRANDON SAUL                   HERNANDEZ ISLAS                       
+     10317       3167                          1                                
+                                                                                
+     10357 ALAN                           JARA PEDRAZA                          
+     10314       4720          5                                                
+                                                                                
+     10358 KAREN ALEXIA                   JIMENEZ VAZQUEZ                       
+     10311       3871          5               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10359 CARLOS AXEL                    JIMENEZ VAZQUEZ                       
+     10316       4137          1                                                
+                                                                                
+     10360 GERMAN                         LEON FELICIANO                        
+     10316       4745          4                                                
+                                                                                
+     10361 GAVIN ROLANDO                  LEZA HERNANDEZ                        
+     10312       4833          7               2                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10362 JESUS GEOVANI                  LOPEZ LOPEZ                           
+     10311       4784          1               1                                
+                                                                                
+     10363 JUAN CARLOS                    LUNA INTERIAN                         
+     10311       3751                                                           
+                                                                                
+     10364 IAN MICHAEL                    MARTINEZ CALDERON                     
+     10313       3393                                                           
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10365 BRENDA GUADALUPE               MARTINEZ JUAREZ                       
+     10314       3031          6               4                                
+                                                                                
+     10366 CARLOS ALFREDO                 MONJARAZ ARRIAGA                      
+     10312       4897          6               3                                
+                                                                                
+     10367 MARCO FABIAN                   MORENO PEDRAZA                        
+     10316       4481          7               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10368 ITZCOATL                       NAVARRO LOPEZ                         
+     10315       4894                          2                                
+                                                                                
+     10369 JULIO CESAR                    PAREDES CERVANTES                     
+     10311       4413          2               3                                
+                                                                                
+     10370 JUAN CARLOS DE JESUS           PEREZ GONZALEZ                        
+     10315       4178          6               3                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10371 ANTONIO BALAM                  POBLANO ESLAVA                        
+     10315       3225          2               3                                
+                                                                                
+     10372 LUIS MARIO                     RAMIREZ ENRIQUEZ                      
+     10315       3324          7                                                
+                                                                                
+     10373 EDUARDO                        RAMIREZ MARTINEZ                      
+     10314       3249                          1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10374 OMAR                           RAMOS JUAREZ                          
+     10316       4186          2               2                                
+                                                                                
+     10375 BRANDON GIOVANNI               RIVERA AGUILAR                        
+     10313       4224          4               1                                
+                                                                                
+     10376 JANETH                         RODRIGUEZ BARRON                      
+     10315       3613          7               3                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10377 ROGELIO                        RODRIGUEZ PEREZ                       
+     10313       4642          5               5                                
+                                                                                
+     10378 VIVIANA ITZU                   RUIZ VALDEZ                           
+     10315       3692                          2                                
+                                                                                
+     10379 YOKO MICHELLE                  SANDOVAL DE LA ROSA                   
+     10314       3056          2               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10380 JUAN                           SILLERO SANJUAN                       
+     10316       4188          4               4                                
+                                                                                
+     10381 VALENTIN                       SOSA VILLAGOMEZ                       
+     10312       4051          3               1                                
+                                                                                
+     10382 ITZEL VIVIANA                  VILLAMIL ESPINOSA                     
+     10315       3012          4               5                                
+                                                                                
+
+72 rows selected.
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> select nombre, apellido from empleado;
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+JONATHAN NOE                   GALLARDO VILLEGAS                                
+ARTURO                         GARCIA GARAY                                     
+LUIS EDUARDO                   GONZALEZ APONTE                                  
+CARLOS ALBERTO                 GONZALEZ GARCIA                                  
+CARLOS ALBERTO                 GONZALEZ SANCHEZ                                 
+DIEGO ALAN                     HERNANDEZ GUTIERREZ                              
+JORGE OMAR                     HERNANDEZ LUNA                                   
+ALEJANDRO                      IZQUIERDO ALVARADO                               
+VICTOR HUGO                    MAGOS JIMENEZ                                    
+ABRAHAM                        MEDINA DUQUE                                     
+CLAUDIA ANDREA                 MEDINA MURUETA                                   
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+CARLOS AXEL                    MENDOZA REBOLLO                                  
+LUIS FERNANDO                  NAVA DOMINGUEZ                                   
+SERGIO SALVADOR                NEAVE ARANA                                      
+JAQUELINE                      PIÃ‘A CASTILLO                                   
+ADRIAN                         RAMIREZ MUÃ‘OZ                                   
+CARLOS DAVID                   RAMIREZ REYES                                    
+CHRISTOPHER ALEXANDER          REYES ADUNA                                      
+GRECIA DENISSE                 RODRIGUEZ CASTRO                                 
+ROGELIO                        RODRIGUEZ LOPEZ                                  
+EMMANUEL                       SANCHEZ OLIVARES                                 
+JENNIFER DAFNE                 SANTOS CRUZ                                      
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+MONICA VALERIA                 VALVERDE CHAVEZ                                  
+MARLON                         VERA DIAZ                                        
+RODRIGO                        ZAVALA RODRIGUEZ                                 
+LUIS ESTEBAN                   AGUILAR ESCUTIA                                  
+JULIO                          AGUILAR ONOFRE                                   
+JORGE GABRIEL                  ALCANTARA PEREZ                                  
+ARTURO                         ALVAREZ CHAVEZ                                   
+HERADIO JAVIER                 ALVAREZ LOPEZ                                    
+JUAN IRVING                    AVILES TABARES                                   
+OMAR YAIR                      BALDERAS MATA                                    
+MARCOS ANTONIO                 BARCENAS GARCIA                                  
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+ARGELIA ELIZABETH              BARRERA DURAN                                    
+JOVANY                         CALDERON PACHECO                                 
+RAMON                          CORTES RUIZ                                      
+LUIS ENRIQUE                   DE LA ROSA MEJIA                                 
+JOSUE TADEO                    DIAZ MONROY                                      
+EDMUNDO ISMAEL                 FRAGOSO ARIZA                                    
+BRYAN                          GALICIA FALCON                                   
+DAFNE YARETZI                  GIRON REYES                                      
+NOE                            GOMEZ MARIN                                      
+CARLOS ENRIQUE                 GONZALEZ HERNANDEZ                               
+SANDRA IVETTE                  GONZALEZ ROCHA                                   
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+ISRAEL                         GONZALEZ SANCHEZ                                 
+BRANDON SAUL                   HERNANDEZ ISLAS                                  
+ALAN                           JARA PEDRAZA                                     
+KAREN ALEXIA                   JIMENEZ VAZQUEZ                                  
+CARLOS AXEL                    JIMENEZ VAZQUEZ                                  
+GERMAN                         LEON FELICIANO                                   
+GAVIN ROLANDO                  LEZA HERNANDEZ                                   
+JESUS GEOVANI                  LOPEZ LOPEZ                                      
+JUAN CARLOS                    LUNA INTERIAN                                    
+IAN MICHAEL                    MARTINEZ CALDERON                                
+BRENDA GUADALUPE               MARTINEZ JUAREZ                                  
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+CARLOS ALFREDO                 MONJARAZ ARRIAGA                                 
+MARCO FABIAN                   MORENO PEDRAZA                                   
+ITZCOATL                       NAVARRO LOPEZ                                    
+JULIO CESAR                    PAREDES CERVANTES                                
+JUAN CARLOS DE JESUS           PEREZ GONZALEZ                                   
+ANTONIO BALAM                  POBLANO ESLAVA                                   
+LUIS MARIO                     RAMIREZ ENRIQUEZ                                 
+EDUARDO                        RAMIREZ MARTINEZ                                 
+OMAR                           RAMOS JUAREZ                                     
+BRANDON GIOVANNI               RIVERA AGUILAR                                   
+JANETH                         RODRIGUEZ BARRON                                 
+
+NOMBRE                         APELLIDO                                         
+------------------------------ ------------------------------                   
+ROGELIO                        RODRIGUEZ PEREZ                                  
+VIVIANA ITZU                   RUIZ VALDEZ                                      
+YOKO MICHELLE                  SANDOVAL DE LA ROSA                              
+JUAN                           SILLERO SANJUAN                                  
+VALENTIN                       SOSA VILLAGOMEZ                                  
+ITZEL VIVIANA                  VILLAMIL ESPINOSA                                
+
+72 rows selected.
+
+NESTOR0307-SQL> select nombre, apellido,monto from empleado
+  2  where monto > 4500;
+
+NOMBRE                         APELLIDO                            MONTO        
+------------------------------ ------------------------------ ----------        
+JONATHAN NOE                   GALLARDO VILLEGAS                    4781        
+JORGE OMAR                     HERNANDEZ LUNA                       4690        
+ADRIAN                         RAMIREZ MUÃ‘OZ                       4851        
+CARLOS DAVID                   RAMIREZ REYES                        4989        
+MARLON                         VERA DIAZ                            4550        
+RODRIGO                        ZAVALA RODRIGUEZ                     4724        
+ARTURO                         ALVAREZ CHAVEZ                       4864        
+DAFNE YARETZI                  GIRON REYES                          4833        
+NOE                            GOMEZ MARIN                          4690        
+ALAN                           JARA PEDRAZA                         4720        
+GERMAN                         LEON FELICIANO                       4745        
+
+NOMBRE                         APELLIDO                            MONTO        
+------------------------------ ------------------------------ ----------        
+GAVIN ROLANDO                  LEZA HERNANDEZ                       4833        
+JESUS GEOVANI                  LOPEZ LOPEZ                          4784        
+CARLOS ALFREDO                 MONJARAZ ARRIAGA                     4897        
+ITZCOATL                       NAVARRO LOPEZ                        4894        
+ROGELIO                        RODRIGUEZ PEREZ                      4642        
+
+16 rows selected.
+
+NESTOR0307-SQL> select nombre, apellido,monto, id_suc from empleado
+  2  where monto > 4500 and id_suc =1;
+
+NOMBRE                         APELLIDO                            MONTO        
+------------------------------ ------------------------------ ----------        
+    ID_SUC                                                                      
+----------                                                                      
+JONATHAN NOE                   GALLARDO VILLEGAS                    4781        
+         1                                                                      
+                                                                                
+DAFNE YARETZI                  GIRON REYES                          4833        
+         1                                                                      
+                                                                                
+JESUS GEOVANI                  LOPEZ LOPEZ                          4784        
+         1                                                                      
+                                                                                
+
+NESTOR0307-SQL> select nombre, apellido,monto, id_suc from empleado
+  2  where monto > 4500 and id_suc =1
+  3  order b
+  4  ;
+order b
+      *
+ERROR at line 3:
+ORA-00924: missing BY keyword 
+
+
+NESTOR0307-SQL> select nombre, apellido, monto, id_suc from empleado
+  2  where monto > 4500 and id_suc = 1
+  3  order by monto;
+
+NOMBRE                         APELLIDO                            MONTO        
+------------------------------ ------------------------------ ----------        
+    ID_SUC                                                                      
+----------                                                                      
+JONATHAN NOE                   GALLARDO VILLEGAS                    4781        
+         1                                                                      
+                                                                                
+JESUS GEOVANI                  LOPEZ LOPEZ                          4784        
+         1                                                                      
+                                                                                
+DAFNE YARETZI                  GIRON REYES                          4833        
+         1                                                                      
+                                                                                
+
+NESTOR0307-SQL> l3
+  3* order by monto
+NESTOR0307-SQL> change /monto/monto desc;
+  3* order by monto desc
+NESTOR0307-SQL> /
+
+NOMBRE                         APELLIDO                            MONTO        
+------------------------------ ------------------------------ ----------        
+    ID_SUC                                                                      
+----------                                                                      
+DAFNE YARETZI                  GIRON REYES                          4833        
+         1                                                                      
+                                                                                
+JESUS GEOVANI                  LOPEZ LOPEZ                          4784        
+         1                                                                      
+                                                                                
+JONATHAN NOE                   GALLARDO VILLEGAS                    4781        
+         1                                                                      
+                                                                                
+
+NESTOR0307-SQL> select nombre, apellido,monto, id_suc from empleado
+  2  where monto > 4500 and id_suc =1
+  3  order by mon
+  4  ;
+order by mon
+         *
+ERROR at line 3:
+ORA-00904: "MON": invalid identifier 
+
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> select id_suc, count(matricula)
+  2  from empleado
+  3  group by id_suc;
+
+    ID_SUC COUNT(MATRICULA)                                                     
+---------- ----------------                                                     
+         6                7                                                     
+         1                8                                                     
+         7               10                                                     
+         2               10                                                     
+         4                9                                                     
+         5                9                                                     
+                          8                                                     
+         3               11                                                     
+
+8 rows selected.
+
+NESTOR0307-SQL> select id_suc, count(matricula)
+  2  from empleado
+  3  group by id_suc
+  4  order by id_suc;
+
+    ID_SUC COUNT(MATRICULA)                                                     
+---------- ----------------                                                     
+         1                8                                                     
+         2               10                                                     
+         3               11                                                     
+         4                9                                                     
+         5                9                                                     
+         6                7                                                     
+         7               10                                                     
+                          8                                                     
+
+8 rows selected.
+
+NESTOR0307-SQL> select id_suc, count(matricula)
+  2  from empleado
+  3  group by id_suc
+  4  having count(matricula) > 9
+  5  order by id_suc desc;
+
+    ID_SUC COUNT(MATRICULA)                                                     
+---------- ----------------                                                     
+         7               10                                                     
+         3               11                                                     
+         2               10                                                     
+
+NESTOR0307-SQL> desc sucursal
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID_SUC                                             NUMBER(8)
+ NOMBRE                                             VARCHAR2(10)
+ CUPO                                               NUMBER(8)
+
+NESTOR0307-SQL> insert into sucursal (id_suc, nombre,cupo) values (8,'China',50000);
+
+1 row created.
+
+NESTOR0307-SQL> insert into sucursal values (9,'Australia',50000);
+
+1 row created.
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+         8 China           50000                                                
+         9 Australia       50000                                                
+
+8 rows selected.
+
+NESTOR0307-SQL> delete from sucrusal where id_suc = 9;
+delete from sucrusal where id_suc = 9
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+NESTOR0307-SQL> delete from sucursal where id_suc = 9;
+
+1 row deleted.
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+         8 China           50000                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> delete from sucursal where nombre='China';
+
+1 row deleted.
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/lab-bd/practica8/descripcion.txt append
