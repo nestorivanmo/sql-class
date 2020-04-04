@@ -1,0 +1,57 @@
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> prompt 9. Eliminar de las sucursales a Italia
+9. Eliminar de las sucursales a Italia
+NESTOR0307-SQL> delete from sucursal where nombre = 'Italia';
+
+1 row deleted.
+
+NESTOR0307-SQL> select * sucursal;
+select * sucursal
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+         8 España          65000                                                
+
+7 rows selected.
+
+NESTOR0307-SQL> rollback;
+
+Rollback complete.
+
+NESTOR0307-SQL> select * from sucursla,
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> spool
+currently spooling to /home/nestorivanmo/Desktop/lab-bd/practica8/practica8-spool.txtappend
+NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/lab-bd/practica8/practica8-spool.txt append
