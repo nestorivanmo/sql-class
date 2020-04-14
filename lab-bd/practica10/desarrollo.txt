@@ -1,0 +1,740 @@
+SYSTEM-SQL> select id_departamento, trunc(min(monto), 0) as monto
+  2  from empleado
+  3  group by id_departamento
+  4  order by id_departamento;
+
+ID_DEPARTAMENTO      MONTO                                                      
+--------------- ----------                                                      
+              1       3020                                                      
+              2       3068                                                      
+              3       3047                                                      
+              4       3031                                                      
+              5       3012                                                      
+                      3286                                                      
+
+6 rows selected.
+
+SYSTEM-SQL> select e.id_departamento, d.departamento, trunc(min(monto), 0) as monto
+  2  from empleado e join departamento d
+  3  using (id_departamento)
+  4  group by id_departamento
+  5  order by id_departamento;
+select e.id_departamento, d.departamento, trunc(min(monto), 0) as monto
+       *
+ERROR at line 1:
+ORA-25154: column part of USING clause cannot have qualifier 
+
+
+SYSTEM-SQL> select e.id_departamento, d.departamento, trunc(min(monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento
+  4  group by id_departamento
+  5  order by id_departamento;
+group by id_departamento
+         *
+ERROR at line 4:
+ORA-00918: column ambiguously defined 
+
+
+SYSTEM-SQL> select e.id_departamento, d.departamento, trunc(min(monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento
+  4  group by e.id_departamento
+  5  order by e.id_departamento;
+select e.id_departamento, d.departamento, trunc(min(monto), 0) as monto
+                          *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SYSTEM-SQL> select departamento, trunc(min(monto), 0) as monto
+  2  from empleado join departamento
+  3  where ;
+where 
+*
+ERROR at line 3:
+ORA-00905: missing keyword 
+
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> select id_departamento, departamento
+  2  from empleado inner join departamento
+  3  on empleado.id_departamento = departamento.id_departamento;
+select id_departamento, departamento
+       *
+ERROR at line 1:
+ORA-00918: column ambiguously defined 
+
+
+SYSTEM-SQL> select e.id_departamento, d.departamento
+  2  from empleado inner join departamento
+  3  on e.id_d
+  4  ;
+
+*
+ERROR at line 4:
+ORA-00920: invalid relational operator 
+
+
+SYSTEM-SQL> select e.id_departamento, d.departamento
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento;
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              1 Ayu Gen                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+              2 Sistema                                                         
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              2 Sistema                                                         
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              3 Conta                                                           
+              4 Admin                                                           
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              4 Admin                                                           
+              4 Admin                                                           
+              4 Admin                                                           
+              4 Admin                                                           
+              4 Admin                                                           
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+
+ID_DEPARTAMENTO DEPARTAMEN                                                      
+--------------- ----------                                                      
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+              5 DiseÃ±o                                                         
+
+61 rows selected.
+
+SYSTEM-SQL> select e.id_departamento, d.departamento, trunc(min(e.monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento;
+select e.id_departamento, d.departamento, trunc(min(e.monto), 0) as monto
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SYSTEM-SQL> select d.departamento
+  2  from departamento d
+  3  join(
+  4  select e.id_departamento, trunc(min(monto), 0) as monto
+  5  from empleado e
+  6  group by e.id_departamento) on d.id_departamento = e.id_departamento;
+group by e.id_departamento) on d.id_departamento = e.id_departamento
+                                                   *
+ERROR at line 6:
+ORA-00904: "E"."ID_DEPARTAMENTO": invalid identifier 
+
+
+SYSTEM-SQL> select d.departamento
+  2  from departamento d
+  3  join (
+  4  selec id_departamento, trunc(min(monto), 0) as monto
+  5  from empleado
+  6  group by id_departamento) e on e.id_departamento = d.id_departamento;
+selec id_departamento, trunc(min(monto), 0) as monto
+                     *
+ERROR at line 4:
+ORA-00907: missing right parenthesis 
+
+
+SYSTEM-SQL> select d.departamento
+  2  from departamento d
+  3  join (
+  4  select id_departamento, trunc(min(monto), 0) as monto
+  5  from empleado
+  6  group by id_departamento) e on e.id_departamento = d.id_departamento;
+
+DEPARTAMEN                                                                      
+----------                                                                      
+Ayu Gen                                                                         
+Sistema                                                                         
+DiseÃ±o                                                                         
+Admin                                                                           
+Conta                                                                           
+
+SYSTEM-SQL> select e.id_departamento, trunc(min(monto), 0) as monto
+  2  from empleado e
+  3  join (
+  4  select departamento
+  5  from departamento ) d on e.id_departamento = d.id_departamento;
+from departamento ) d on e.id_departamento = d.id_departamento
+                                             *
+ERROR at line 5:
+ORA-00904: "D"."ID_DEPARTAMENTO": invalid identifier 
+
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> select * from empleado
+  2  where nombre like '%J';
+
+no rows selected
+
+SYSTEM-SQL> select * from empleado
+  2  where nombre like 'J%';
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10311 JONATHAN NOE                   GALLARDO VILLEGAS                     
+                 4781          1               2                                
+                                                                                
+     10317 JORGE OMAR                     HERNANDEZ LUNA                        
+                 4690          7               1                                
+                                                                                
+     10325 JAQUELINE                      PIÃ‘A CASTILLO                        
+     10316       3930          3                                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10332 JENNIFER DAFNE                 SANTOS CRUZ                           
+     10314       3081          6               4                                
+                                                                                
+     10337 JULIO                          AGUILAR ONOFRE                        
+     10311       4065          4               1                                
+                                                                                
+     10338 JORGE GABRIEL                  ALCANTARA PEREZ                       
+     10315       4198          5               5                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10341 JUAN IRVING                    AVILES TABARES                        
+     10313       4188          4               1                                
+                                                                                
+     10345 JOVANY                         CALDERON PACHECO                      
+     10312       3047          3               3                                
+                                                                                
+     10348 JOSUE TADEO                    DIAZ MONROY                           
+     10313       3885          3               4                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10362 JESUS GEOVANI                  LOPEZ LOPEZ                           
+     10311       4784          1               1                                
+                                                                                
+     10363 JUAN CARLOS                    LUNA INTERIAN                         
+     10311       3751                                                           
+                                                                                
+     10369 JULIO CESAR                    PAREDES CERVANTES                     
+     10311       4413          2               3                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10370 JUAN CARLOS DE JESUS           PEREZ GONZALEZ                        
+     10315       4178          6               3                                
+                                                                                
+     10376 JANETH                         RODRIGUEZ BARRON                      
+     10315       3613          7               3                                
+                                                                                
+     10380 JUAN                           SILLERO SANJUAN                       
+     10316       4188          4               4                                
+                                                                                
+
+15 rows selected.
+
+SYSTEM-SQL> select * from empleado where apellido like '%H%';
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10315 CARLOS ALBERTO                 GONZALEZ SANCHEZ                      
+                 3064          5               1                                
+                                                                                
+     10316 DIEGO ALAN                     HERNANDEZ GUTIERREZ                   
+                 4378          6                                                
+                                                                                
+     10317 JORGE OMAR                     HERNANDEZ LUNA                        
+                 4690          7               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10331 EMMANUEL                       SANCHEZ OLIVARES                      
+     10312       3068          7               2                                
+                                                                                
+     10333 MONICA VALERIA                 VALVERDE CHAVEZ                       
+     10314       3964          6                                                
+                                                                                
+     10339 ARTURO                         ALVAREZ CHAVEZ                        
+     10311       4864          7               1                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10345 JOVANY                         CALDERON PACHECO                      
+     10312       3047          3               3                                
+                                                                                
+     10353 CARLOS ENRIQUE                 GONZALEZ HERNANDEZ                    
+     10317       3754          2               3                                
+                                                                                
+     10354 SANDRA IVETTE                  GONZALEZ ROCHA                        
+     10317       4428          7                                                
+                                                                                
+
+ MATRICULA NOMBRE                         APELLIDO                              
+---------- ------------------------------ ------------------------------        
+   ID_JEFE      MONTO     ID_SUC ID_DEPARTAMENTO                                
+---------- ---------- ---------- ---------------                                
+     10355 ISRAEL                         GONZALEZ SANCHEZ                      
+     10317       3742          3               5                                
+                                                                                
+     10356 BRANDON SAUL                   HERNANDEZ ISLAS                       
+     10317       3167                          1                                
+                                                                                
+     10361 GAVIN ROLANDO                  LEZA HERNANDEZ                        
+     10312       4833          7               2                                
+                                                                                
+
+12 rows selected.
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> select e.nombre, s.nombre
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc
+  4  where s.id_suc = 5 or s.id_suc = 7;
+
+NOMBRE                         NOMBRE                                           
+------------------------------ ----------                                       
+CARLOS ALBERTO                 Argentina                                        
+SERGIO SALVADOR                Argentina                                        
+GRECIA DENISSE                 Argentina                                        
+JORGE GABRIEL                  Argentina                                        
+EDMUNDO ISMAEL                 Argentina                                        
+NOE                            Argentina                                        
+ALAN                           Argentina                                        
+KAREN ALEXIA                   Argentina                                        
+ROGELIO                        Argentina                                        
+JORGE OMAR                     Canada                                           
+ALEJANDRO                      Canada                                           
+
+NOMBRE                         NOMBRE                                           
+------------------------------ ----------                                       
+EMMANUEL                       Canada                                           
+MARLON                         Canada                                           
+ARTURO                         Canada                                           
+SANDRA IVETTE                  Canada                                           
+GAVIN ROLANDO                  Canada                                           
+MARCO FABIAN                   Canada                                           
+LUIS MARIO                     Canada                                           
+JANETH                         Canada                                           
+
+19 rows selected.
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc
+  4  where s.id_suc = 5 or s.id_suc = 7
+  5  inner join departamento d
+  6  on d.id_departamento = e.id_departamento
+  7  where d.nivel = 'Jr';
+inner join departamento d
+*
+ERROR at line 5:
+ORA-00933: SQL command not properly ended 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento;
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+JONATHAN NOE                   Chile      Sistema                               
+ARTURO                         MÃ©xico    Ayu Gen                               
+LUIS EDUARDO                   Colombia   Ayu Gen                               
+CARLOS ALBERTO                 Peru       DiseÃ±o                               
+CARLOS ALBERTO                 Argentina  Ayu Gen                               
+JORGE OMAR                     Canada     Ayu Gen                               
+ALEJANDRO                      Canada     Conta                                 
+ABRAHAM                        Colombia   Ayu Gen                               
+CLAUDIA ANDREA                 Peru       Ayu Gen                               
+CARLOS AXEL                    Colombia   Sistema                               
+SERGIO SALVADOR                Argentina  Admin                                 
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+ADRIAN                         Colombia   DiseÃ±o                               
+CARLOS DAVID                   MÃ©xico    Admin                                 
+CHRISTOPHER ALEXANDER          Chile      Ayu Gen                               
+GRECIA DENISSE                 Argentina  DiseÃ±o                               
+ROGELIO                        Chile      Conta                                 
+EMMANUEL                       Canada     Sistema                               
+JENNIFER DAFNE                 USA        Admin                                 
+MARLON                         Canada     DiseÃ±o                               
+RODRIGO                        MÃ©xico    DiseÃ±o                               
+LUIS ESTEBAN                   Peru       Sistema                               
+JULIO                          Peru       Ayu Gen                               
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+JORGE GABRIEL                  Argentina  DiseÃ±o                               
+ARTURO                         Canada     Ayu Gen                               
+HERADIO JAVIER                 MÃ©xico    Sistema                               
+JUAN IRVING                    Peru       Ayu Gen                               
+OMAR YAIR                      Chile      Sistema                               
+MARCOS ANTONIO                 Chile      DiseÃ±o                               
+ARGELIA ELIZABETH              USA        Sistema                               
+JOVANY                         Colombia   Conta                                 
+JOSUE TADEO                    Colombia   Admin                                 
+EDMUNDO ISMAEL                 Argentina  Ayu Gen                               
+BRYAN                          MÃ©xico    DiseÃ±o                               
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+DAFNE YARETZI                  Chile      Ayu Gen                               
+NOE                            Argentina  Sistema                               
+CARLOS ENRIQUE                 MÃ©xico    Conta                                 
+ISRAEL                         Colombia   DiseÃ±o                               
+KAREN ALEXIA                   Argentina  Sistema                               
+GAVIN ROLANDO                  Canada     Sistema                               
+JESUS GEOVANI                  Chile      Ayu Gen                               
+BRENDA GUADALUPE               USA        Admin                                 
+CARLOS ALFREDO                 USA        Conta                                 
+MARCO FABIAN                   Canada     Ayu Gen                               
+JULIO CESAR                    MÃ©xico    Conta                                 
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+JUAN CARLOS DE JESUS           USA        Conta                                 
+ANTONIO BALAM                  MÃ©xico    Conta                                 
+OMAR                           MÃ©xico    Sistema                               
+BRANDON GIOVANNI               Peru       Ayu Gen                               
+JANETH                         Canada     Conta                                 
+ROGELIO                        Argentina  DiseÃ±o                               
+YOKO MICHELLE                  MÃ©xico    Ayu Gen                               
+JUAN                           Peru       Admin                                 
+VALENTIN                       Colombia   Ayu Gen                               
+ITZEL VIVIANA                  Peru       DiseÃ±o                               
+ITZEL VIVIANA                  Peru       DiseÃ±o                               
+
+55 rows selected.
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where s.id_suc = 5 or s.id_suc = 7;
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+CARLOS ALBERTO                 Argentina  Ayu Gen                               
+JORGE OMAR                     Canada     Ayu Gen                               
+ALEJANDRO                      Canada     Conta                                 
+SERGIO SALVADOR                Argentina  Admin                                 
+GRECIA DENISSE                 Argentina  DiseÃ±o                               
+EMMANUEL                       Canada     Sistema                               
+MARLON                         Canada     DiseÃ±o                               
+JORGE GABRIEL                  Argentina  DiseÃ±o                               
+ARTURO                         Canada     Ayu Gen                               
+EDMUNDO ISMAEL                 Argentina  Ayu Gen                               
+NOE                            Argentina  Sistema                               
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+KAREN ALEXIA                   Argentina  Sistema                               
+GAVIN ROLANDO                  Canada     Sistema                               
+MARCO FABIAN                   Canada     Ayu Gen                               
+JANETH                         Canada     Conta                                 
+ROGELIO                        Argentina  DiseÃ±o                               
+
+16 rows selected.
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.id_suc = 5 or s.id_suc = 7) and d.nivel = 'Jr';
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+CARLOS ALBERTO                 Argentina  Ayu Gen                               
+JORGE OMAR                     Canada     Ayu Gen                               
+ARTURO                         Canada     Ayu Gen                               
+EDMUNDO ISMAEL                 Argentina  Ayu Gen                               
+MARCO FABIAN                   Canada     Ayu Gen                               
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento, d.nivel
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.id_suc = 5 or s.id_suc = 7) and d.nivel = 'Jr';
+
+NOMBRE                         NOMBRE     DEPARTAMEN NIVEL                      
+------------------------------ ---------- ---------- ----------                 
+CARLOS ALBERTO                 Argentina  Ayu Gen    Jr                         
+JORGE OMAR                     Canada     Ayu Gen    Jr                         
+ARTURO                         Canada     Ayu Gen    Jr                         
+EDMUNDO ISMAEL                 Argentina  Ayu Gen    Jr                         
+MARCO FABIAN                   Canada     Ayu Gen    Jr                         
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> spool /home/nestorivanmo/Desktop/sql-class/lab-bd/practica10/desarrollo.txt append
+SYSTEM-SQL> select trunc(sum(monto), 0) as monto
+  2  from empleado;
+
+     MONTO                                                                      
+----------                                                                      
+    285298                                                                      
+
+SYSTEM-SQL> select trunc(sum(monto), 0) as monto
+  2  from emplead
+  3  where monto < 50000;
+from emplead
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> select e.nombre, s.nombre, d.departmento, trunc(sum(e.monto), 0) as monto
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.id_suc = 5 or s.id_suc = 7) and (d.nivel = 'Jr');
+select e.nombre, s.nombre, d.departmento, trunc(sum(e.monto), 0) as monto
+                           *
+ERROR at line 1:
+ORA-00904: "D"."DEPARTMENTO": invalid identifier 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento, trunc(sum(e.monto), 0) as monto
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.id_suc = 5 or s.id_suc = 7) and (d.nivel = 'Jr');
+select e.nombre, s.nombre, d.departamento, trunc(sum(e.monto), 0) as monto
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function 
+
+
+SYSTEM-SQL> select e.nombre, d.departamento, trunc(sum(e.monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on d.id_departamento = e.id_departamento
+  4  group by e.id_departamento
+  5  having sum(e.monto) > 30000;
+select e.nombre, d.departamento, trunc(sum(e.monto), 0) as monto
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SYSTEM-SQL> cl scr;
+SYSTEM-SQL> select d.departamento, trunc(min(e.monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.departamento
+  4  group by d.departamento;
+on e.id_departamento = d.departamento
+                       *
+ERROR at line 3:
+ORA-01722: invalid number 
+
+
+SYSTEM-SQL> select d.departamento, trunc(min(e.monto), 0) as monto
+  2  rom empleado e inner join departamento d
+  3  ;
+rom empleado e inner join departamento d
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SYSTEM-SQL> select d.departamento, trunc(min(e.monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento
+  4  group by d.departamento;
+
+DEPARTAMEN      MONTO                                                           
+---------- ----------                                                           
+Admin            3031                                                           
+DiseÃ±o          3012                                                           
+Ayu Gen          3020                                                           
+Sistema          3068                                                           
+Conta            3047                                                           
+
+SYSTEM-SQL> select d.departamento, trunc(min(e.monto), 0) as mont
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento
+  4  group by d.departamento, e.id_departamento;
+
+DEPARTAMEN       MONT                                                           
+---------- ----------                                                           
+Ayu Gen          3020                                                           
+Sistema          3068                                                           
+Conta            3047                                                           
+Admin            3031                                                           
+DiseÃ±o          3012                                                           
+
+SYSTEM-SQL> select e.id_departamento, d.departamento, trunc(min(e.monto), 0) as monto
+  2  from empleado e inner join departamento d
+  3  on e.id_departamento = d.id_departamento
+  4  group by d.departamento, e.id_departamento;
+
+ID_DEPARTAMENTO DEPARTAMEN      MONTO                                           
+--------------- ---------- ----------                                           
+              1 Ayu Gen          3020                                           
+              2 Sistema          3068                                           
+              3 Conta            3047                                           
+              4 Admin            3031                                           
+              5 DiseÃ±o          3012                                           
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento, trunc(sum(e.monto), 0) as monto
+  2  from empleado e inner join sucursal s
+  3  on e.id_suc = s.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.id_suc = 5 or s.id_suc = 7) and (d.nivel = 'Jr')
+  6  group by e.nombre, s.nombre, d.departamento
+  7  having sum(e.monto) > 30000;
+
+no rows selected
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from sucursal s inner join empleado e
+  3  on s.id_suc = e.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where (s.nombre = 'Argentina' or s.nombre = 'Canada') and (d.nivel = 'Jr')
+  6  group by e.nombre, s.nombre, d.departamento
+  7  hacing sum(monto) > 30000;
+hacing sum(monto) > 30000
+*
+ERROR at line 7:
+ORA-00933: SQL command not properly ended 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  select e.nombre, s.nombre, d.departamento;
+select e.nombre, s.nombre, d.departamento
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento
+  2  from sucursal s inner join empleado e
+  3  on s.id_suc = e.id_suc inner join departamento d
+  4   on d.id_departamento = e.id_departamento
+  5  where (s.nombre = 'Argentina' or s.nombre = 'Canada') and (d.nivel = 'Jr')
+  6  group by e.nombre, s.nombre, d.departamento
+  7  having sum(monto) < 30000;
+
+NOMBRE                         NOMBRE     DEPARTAMEN                            
+------------------------------ ---------- ----------                            
+CARLOS ALBERTO                 Argentina  Ayu Gen                               
+EDMUNDO ISMAEL                 Argentina  Ayu Gen                               
+JORGE OMAR                     Canada     Ayu Gen                               
+ARTURO                         Canada     Ayu Gen                               
+MARCO FABIAN                   Canada     Ayu Gen                               
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento, d.nivel. trunc(sum(e.monto), 0) as monto
+  2  from sucursal s inner join empleado e
+  3  on s.id_suc = e.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where s.nombre in ('Argentina', 'Canada') and d.nivel='Jr'
+  6  group by e.nombre, s.nombre, d.departamento, d.nivel, monto
+  7  having sum(monto) < 30000;
+select e.nombre, s.nombre, d.departamento, d.nivel. trunc(sum(e.monto), 0) as monto
+                                           *
+ERROR at line 1:
+ORA-00904: "D"."NIVEL"."TRUNC": invalid identifier 
+
+
+SYSTEM-SQL> select e.nombre, s.nombre, d.departamento, d.nivel, trunc(sum(e.monto), 0) as monto
+  2  from sucursal s inner join empleado e
+  3  on s.id_suc = e.id_suc inner join departamento d
+  4  on d.id_departamento = e.id_departamento
+  5  where s.nombre in ('Argentina', 'Canada') and d.nivel='Jr'
+  6  group by e.nombre, s.nombre, d.departamento, d.nivel, monto
+  7  having sum(monto) < 30000;
+
+NOMBRE                         NOMBRE     DEPARTAMEN NI      MONTO              
+------------------------------ ---------- ---------- -- ----------              
+ARTURO                         Canada     Ayu Gen    Jr       4864              
+MARCO FABIAN                   Canada     Ayu Gen    Jr       4481              
+JORGE OMAR                     Canada     Ayu Gen    Jr       4690              
+EDMUNDO ISMAEL                 Argentina  Ayu Gen    Jr       3297              
+CARLOS ALBERTO                 Argentina  Ayu Gen    Jr       3064              
+
+SYSTEM-SQL> spool /home/nestorivanmo/Desktop/sql-class/lab-bd/practica10/desarrollo.txt append

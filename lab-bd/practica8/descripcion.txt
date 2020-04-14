@@ -680,3 +680,62 @@ NESTOR0307-SQL> select * from sucursal;
 6 rows selected.
 
 NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/lab-bd/practica8/descripcion.txt append
+NESTOR0307-SQL> cl scr;
+NESTOR0307-SQL> update sucursal
+  2  set nombre='EUA'
+  3  whre nombre='USA' ;
+whre nombre='USA' 
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+NESTOR0307-SQL> update sucursal
+  2  set nombre='EUA'
+  3  where nombre='USA'
+  4  :
+  5  ;
+:
+*
+ERROR at line 4:
+ORA-00933: SQL command not properly ended 
+
+
+NESTOR0307-SQL> update sucursal
+  2  set nombre='EU'
+  3  where nombre= 'USA';
+
+1 row updated.
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 EU              89000                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> rollback;
+
+Rollback complete.
+
+NESTOR0307-SQL> select * from sucursal;
+
+    ID_SUC NOMBRE           CUPO                                                
+---------- ---------- ----------                                                
+         1 Chile          123456                                                
+         2 MÃ©xico         90000                                                
+         3 Colombia        55000                                                
+         4 Peru            35000                                                
+         5 Argentina       76000                                                
+         6 USA             89000                                                
+
+6 rows selected.
+
+NESTOR0307-SQL> clear
+NESTOR0307-SQL> exit
