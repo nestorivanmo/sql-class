@@ -1,0 +1,130 @@
+NESTOR03072-SQL> prompt Néstor Martínez Ostoa
+Néstor Martínez Ostoa
+NESTOR03072-SQL> prompt Tarea Ejercicios tema 7 parte 2 -> Ejercicio 2
+Tarea Ejercicios tema 7 parte 2 -> Ejercicio 2
+NESTOR03072-SQL> prompt 2.A
+2.A
+NESTOR03072-SQL> alter sequence cliente_seq maxvalue 9999999999 nocycle;
+
+Sequence altered.
+
+NESTOR03072-SQL> prompt 2.B
+2.B
+NESTOR03072-SQL> create or replace view v_cliente_factura (
+  2  nombre, apellido_paterno, apellido_materno, fecha_factura, monto_total
+  3  ) as select c.nombre, c.apellido_paterno, c.apellido_materno, f.fecha_factura, f.monto_total
+  4  from cliente c, factura f
+  5  where c.cliente_id = f.cliente_id;
+create or replace view v_cliente_factura (
+                       *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+NESTOR03072-SQL> connect system
+Connected.
+SYSTEM-SQL> grant create view to nestor03072;
+
+Grant succeeded.
+
+SYSTEM-SQL> connect nestor03072;
+Connected.
+NESTOR03072-SQL> create or replace view v_cliente_factura (
+  2  nombre, apellido_paterno, apellido_materno, fecha_factura, monto_total
+  3  ) as select c.nombre, c.apellido_paterno, c.apellido_materno, f.fecha_factura, f.monto_total
+  4  from cliente c, factura f
+  5  where c.cliente_id = f.cliente_id;
+
+View created.
+
+NESTOR03072-SQL> desc v_cliente_factura;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NOMBRE                                    NOT NULL VARCHAR2(50)
+ APELLIDO_PATERNO                          NOT NULL VARCHAR2(50)
+ APELLIDO_MATERNO                                   VARCHAR2(50)
+ FECHA_FACTURA                             NOT NULL DATE
+ MONTO_TOTAL                               NOT NULL FLOAT(10)
+
+NESTOR03072-SQL> prompt 2.C
+2.C
+NESTOR03072-SQL> select count (*) from libro;
+
+  COUNT(*)
+----------
+         0
+
+NESTOR03072-SQL> alter table libro drop column editorial_id;
+
+Table altered.
+
+NESTOR03072-SQL> alter table editorial drop constraint editorial_pk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table editorial rename column editorial_id to editorial_libro_id;
+
+Table altered.
+
+NESTOR03072-SQL> alter table editorial add constraint editorial_pk primary key (editorial_libro_id);
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro add editorial_libro_id number(5,0);
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro add constraint lib_editorial_libro_id_fk foreign key (editorial_libro_id) references editorial( editorial_libro_id);
+
+Table altered.
+
+NESTOR03072-SQL> prompt 2.D
+2.D
+NESTOR03072-SQL> alter table libro disable constraint libro_tematica_fk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro disable constraint libro_status_fk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro disable constraint lib_editorial_libro_id_fk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro enable constraint lib_editorial_libro_id_fk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro enable constraint libro_tematica_fk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro enable constraint libro_status_fk;
+
+Table altered.
+
+NESTOR03072-SQL> prompt 2.F
+2.F
+NESTOR03072-SQL> truncate table tematica;
+
+Table truncated.
+
+NESTOR03072-SQL> truncate table editorial;
+
+Table truncated.
+
+NESTOR03072-SQL> truncate table libro;
+
+Table truncated.
+
+NESTOR03072-SQL> prompt 2.G
+2.G
+NESTOR03072-SQL> connect system;
+Connected.
+SYSTEM-SQL> drop user nestor03072 cascade;
+
+User dropped.
+SYSTEM-SQL> clear
+SYSTEM-SQL> cl scr
+SYSTEM-SQL> exit

@@ -1,4 +1,0 @@
-NESTOR0307-SQL> cl scr;
-NESTOR0307-SQL> spool /home/nestorivanmo/Desktop/sql-class/1-create-alter-delete/synonims/bd-03-nimo-04-03-syn.txt append
-NESTOR0307-SQL> cl scr;
-NESTOR0307-SQL> exit

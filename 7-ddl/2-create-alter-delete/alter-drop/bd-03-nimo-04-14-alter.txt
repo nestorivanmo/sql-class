@@ -1,0 +1,160 @@
+SYSTEM-SQL> start /home/nestorivanmo/Desktop/ejercicios-tema7-parte2.sql
+Proporcione el Password del usuario  SYS
+Connected.
+Creando un nuevo usuario Tema 7 - Parte 2
+Proporcione usuario y password
+Enter value for usuario: nestor03072
+Enter value for password: nestor
+old   1: create user &&usuario identified by &&password quota unlimited on users
+new   1: create user nestor03072 identified by nestor quota unlimited on users
+
+User created.
+
+old   1: grant create session, create table, create sequence to &usuario
+new   1: grant create session, create table, create sequence to nestor03072
+
+Grant succeeded.
+
+Connected.
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Sequence created.
+
+Configuracion creada con exito.
+Continuar con los ejercicios del tema.
+USER is "NESTOR03072"
+NESTOR03072-SQL> spool /home/nestorivanmo/Desktop/sql-class/2-create-alter-delete/alter-drop/bd-03-nimo-04-14-alter.txt append
+
+NESTOR03072-SQL> cl scr
+NESTOR03072-SQL> desc cliente;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CLIENTE_ID                                NOT NULL NUMBER(10)
+ NOMBRE                                    NOT NULL VARCHAR2(50)
+ APELLIDO_PATERNO                          NOT NULL VARCHAR2(50)
+ APELLIDO_MATERNO                                   VARCHAR2(50)
+ OCUPACION_ID                              NOT NULL NUMBER(10)
+ FACTURA_ID                                NOT NULL NUMBER(10)
+
+NESTOR03072-SQL> desc libro;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LIBRO_ID                                  NOT NULL NUMBER(10)
+ PRECIO                                    NOT NULL NUMBER(5,2)
+ NOMBRE                                    NOT NULL VARCHAR2(100)
+ FECHA_ESTATUS                             NOT NULL DATE
+ EDITORIAL_ID                              NOT NULL NUMBER(5)
+ TEMATICA_ID                               NOT NULL NUMBER(3)
+ ESTATUS_LIBRO_ID                          NOT NULL NUMBER(2)
+
+NESTOR03072-SQL> alter table libro drop constraint libro_pk;
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro add constraint libro_pk primary key (libro_id);
+
+Table altered.
+
+NESTOR03072-SQL> alter table historico_estatus_libro add libro_id number(10,0) not null;
+
+Table altered.
+
+NESTOR03072-SQL> alter table historico_estatus_libro add constraint historico_status_libo_libro_id_fk foreign key libro(libro_id);
+alter table historico_estatus_libro add constraint historico_status_libo_libro_id_fk foreign key libro(libro_id)
+                                                                                                 *
+ERROR at line 1:
+ORA-00906: missing left parenthesis
+
+
+NESTOR03072-SQL> alter table historico_estatus_libro add constraint historico_status_libo_libro_id_fk foreign key libro_id references libro(libro_id);
+alter table historico_estatus_libro add constraint historico_status_libo_libro_id_fk foreign key libro_id references libro(libro_id)
+                                                                                                 *
+ERROR at line 1:
+ORA-00906: missing left parenthesis
+
+
+NESTOR03072-SQL> alter table historico_estatus_libro add constraint historico_estatus_libro_libro_id_fk foreign key (libro_id) references libro(libro_id);
+
+Table altered.
+
+NESTOR03072-SQL> cl scr
+NESTOR03072-SQL> alter libro add clave varchar2(10) not null constraint libro_clave_uk unique (clave);
+alter libro add clave varchar2(10) not null constraint libro_clave_uk unique (clave)
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command
+
+
+NESTOR03072-SQL> alter table libro add clave varchar2(10) not null constraint libro_clave_uk unique (clave);
+alter table libro add clave varchar2(10) not null constraint libro_clave_uk unique (clave)
+                                                                                    *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+NESTOR03072-SQL> alter table libro add clave varchar2(10) not null constraint libro_clave_uk unique;
+
+Table altered.
+
+NESTOR03072-SQL> cl scr
+NESTOR03072-SQL> alter table libro modify (precio number(6,2));
+
+Table altered.
+
+NESTOR03072-SQL> alter table add constraint libro_precio_chk check (precio >= 20 and precio <= 5000);
+alter table add constraint libro_precio_chk check (precio >= 20 and precio <= 5000)
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+NESTOR03072-SQL> alter table libro add constraint libro_precio_chk check (precio >= 20 and precio <= 5000);
+
+Table altered.
+
+NESTOR03072-SQL> alter table libro modify tematica null;
+alter table libro modify tematica null
+                         *
+ERROR at line 1:
+ORA-00904: "TEMATICA": invalid identifier
+
+
+NESTOR03072-SQL> alter table libro modify tematica_id null;
+
+Table altered.
+
+NESTOR03072-SQL> alter table cliente drop column factura_id;
+
+Table altered.
+
+NESTOR03072-SQL> alter table factura add cliente_id number(10,0) not null;
+
+Table altered.
+
+NESTOR03072-SQL> alter table factura add constraint factura_cliente_id_fk foreign key (cliente_id) references cliente (cliente_id);
+
+Table altered.
+
+NESTOR03072-SQL> spool /home/nestorivanmo/Desktop/sql-class/2-create-alter-delete/alter-drop/bd-03-nimo-04-14-alter.txt append
+NESTOR03072-SQL> cl scr
+NESTOR03072-SQL> spool off
