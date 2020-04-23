@@ -350,3 +350,4 @@ NESTOR0308-SQL> commit;
 Commit complete.
 
 NESTOR0308-SQL> spool /home/nestorivanmo/Desktop/sql-class/8-dml/2-transactions/bd-03-nimo-04-21.txt append
+NESTOR0308-SQL> exit

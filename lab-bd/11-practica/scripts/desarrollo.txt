@@ -1,0 +1,292 @@
+NESTORLAB-SQL> start desarrollo.sql
+1.WHERE
+
+NOMBRE                                                  COSTO
+-------------------------------------------------- ----------
+MINERIA DE DATOS                                        19000
+ANALISIS SAS                                            27000
+TABLEROS DE CONTROL                                     25000
+INTRODUCCION POO                                        10000
+CLASES                                                  28000
+POO AVANZADO                                            15000
+
+6 rows selected.
+
+2.WHERE
+
+SUM(SUELDO)
+-----------
+      48000
+
+3.WHERE
+
+NOMBRE                     CUPO
+-------------------- ----------
+SUR                          25
+
+4.HAVING
+
+NOMBRE                   SUELDO
+-------------------- ----------
+javier                    16000
+Veronica                  14000
+Enrique                   16000
+Luis                      14000
+luis                      22000
+Domitila                  16000
+manuel                    15000
+Enrique                   14000
+Francisco                 20000
+Alejandro                 18000
+Guadalupe                 21000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Argelia                   16000
+Cristina                  19000
+mario                     15000
+rufino                    23000
+Zoraya                    16000
+Rosa                      24000
+Vianey                    21000
+EDGAR                     18000
+Esteban                   16000
+Norma                     17000
+Javier                    22000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Roberto                   17000
+Gisela                    23000
+veronica                  14000
+Rodrigo                   16000
+Zaira                     15000
+Raul                      18000
+Ingrid                    17000
+Luis                      20000
+heriberto                 25000
+Roberto                   23000
+Lorenzo                   19000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Rafael                    20000
+Ana                       23000
+Elizabeth                 17000
+Alejandro                 14000
+Carlos                    14000
+Vladimir                  17000
+paulina                   17000
+Karina                    19000
+Salvador                  15000
+Edith                     16000
+Gerardo                   15000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Martin                    15000
+silvia                    14000
+German                    18000
+Arturo                    22000
+ARTURO                    19000
+sybil                     23000
+Vianey                    25000
+Daniel                    14000
+Cristina                  16000
+Francisco                 14000
+josefina                  22000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Veronica                  16000
+Humberto                  21000
+Erika                     24000
+Leticia                   24000
+Mariana                   25000
+Marisol                   23000
+Marcela                   15000
+Armando                   15000
+Claudia                   14000
+Pamela                    20000
+Marcos                    21000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Refugio                   16000
+Luis                      17000
+Elizabeth                 18000
+miguel                    18000
+Mario                     24000
+Ana                       22000
+Esteban                   17000
+Lilia                     19000
+ELENA                     25000
+dulce                     19000
+Ana                       24000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Irma                      16000
+Edith                     25000
+Eduardo                   25000
+Elisabeth                 19000
+sergio                    16000
+reyna                     19000
+Fernando                  17000
+Luis                      22000
+Sergio                    16000
+Roberto                   16000
+jorge                     23000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Irma                      21000
+America                   18000
+irma                      21000
+Rodolfo                   15000
+Alejandra                 21000
+Pablo                     22000
+arturo                    25000
+rosalia                   21000
+RAMON                     16000
+Candy                     22000
+Tania                     14000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Raul                      15000
+Santiago                  17000
+Adriana                   20000
+Yazmin                    17000
+Ernesto                   25000
+lesli                     16000
+karla                     15000
+Gerardo                   14000
+lesly                     20000
+Elizandra                 23000
+Yolanda                   25000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Sergio                    25000
+Cecilia                   14000
+Nancy                     24000
+Marvella                  24000
+Paulina                   22000
+maria                     20000
+Carlos                    24000
+Diana                     14000
+Manuel                    16000
+Rolando                   20000
+Gabriel                   14000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Marcela                   16000
+Laura                     23000
+Hector                    25000
+Fausto                    23000
+Jose                      25000
+Sergio                    24000
+elizabeth                 24000
+Elena                     14000
+Marcela                   21000
+Jose                      23000
+maria                     22000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Jorge                     25000
+Edgar                     17000
+JOSE                      22000
+Norma                     25000
+Angeles                   20000
+Raul                      20000
+blanca                    17000
+Juan                      16000
+Luis                      24000
+juan                      21000
+Lorenzo                   21000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Claudia                   20000
+Florentino                15000
+Sergio                    22000
+Jorge                     23000
+Maria                     19000
+Luis                      15000
+Cynthia                   19000
+Karen                     16000
+hugo                      15000
+OMAR                      23000
+Harumi                    25000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Erick                     21000
+Erick                     25000
+jose                      19000
+Sandra                    14000
+silvia                    24000
+Jose                      20000
+Gabriela                  15000
+Marcela                   25000
+Oscar                     15000
+Erika                     16000
+LUCERO                    15000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Erika                     20000
+Pablo                     24000
+lourdes                   17000
+ERIKA                     21000
+Ana                       25000
+Maria                     16000
+Norma                     21000
+MANUEL                    24000
+Laura                     17000
+rafael                    19000
+Eduardo                   15000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Elizabeth                 15000
+Mildret                   20000
+Noe                       17000
+Gabino                    18000
+Yazmin                    21000
+Erike                     21000
+roberto                   18000
+Miriam                    16000
+Leonardo                  18000
+otto                      25000
+Yolanda                   19000
+
+NOMBRE                   SUELDO
+-------------------- ----------
+Esteban                   20000
+fernando                  20000
+Juan                      14000
+Roxana                    16000
+Yazmin                    14000
+Jorge                     20000
+Marco                     23000
+
+194 rows selected.
+
+5.HAVING
+
+   ID_PAIS AVG(SUELDO)
+---------- -----------
+        14  15416.6667
+         5       15650
+        16  16076.9231
+
+6.WHERE/HAVING
+
+no rows selected
+
+NESTORLAB-SQL> cl scr
+NESTORLAB-SQL> spool off

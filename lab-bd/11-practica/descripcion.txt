@@ -1,0 +1,3154 @@
+NESTORLAB-SQL> start bd.sql
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+SELECT COUNT(*) FROM PAIS
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO D_CURSO VALUES(7,'AMO010129PL3',4,10,to_date('02/04/2019', 'dd/mm/yyyy')
+                                                                                   *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO D_CURSO VALUES(7,'THE980324HYA',16,4,to_date('02/04/2019', 'dd/mm/yyyy')))
+                                                                                     *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO D_CURSO VALUES(11,'ASG970521JP5',21,13,to_date('22/02/2019', 'dd/mm/yyyy')
+                                                                                     *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO D_CURSO VALUES(12,'ASR770801G51',13,17,to_date('26/11/2019', 'dd/mm/yyyy)')
+                                                                                      *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+INSERT INTO D_CURSO VALUES(13,'ASG970521JP5',1,7,to_date('12/05/2019', 'dd/mm/yyyy');)
+                                                                                    *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO D_CURSO VALUES(13,'THI980317M55',13,10,to_date('12/05/2019', 'dd/mm/yyyy)')
+                                                                                      *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+INSERT INTO D_CURSO VALUES(14,'TMR961128QE5',1,8,to_date('19/08/2019', 'dd/mm/yyyy');)
+                                                                                    *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+  COUNT(*)
+----------
+         5
+         7
+        18
+        21
+        24
+       207
+       392
+
+7 rows selected.
+
+NESTORLAB-SQL> cl scr
+NESTORLAB-SQL> start descripcion.sql
+1
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TME991029CK2 sybil                Esmeralda                 23000         14
+        37
+
+TMG020508L7A OMAR                 Hernandez                 23000         16
+        35
+
+TMG9210161L6 Yazmin               Onofre                    17000          5
+        32
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TMH7303296B8 javier               Reyes                     16000          8
+        31
+
+TMI9207151E5 Maria                Garcia                    16000         10
+        28
+
+TMI971031N52 Harumi               vazquez                   25000         11
+        27
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TMJ900911N93 Gisela               Basurto                   23000         14
+        26
+
+TMN610302T3A Norma                Lechuga                   21000         18
+        22
+
+TMP960605R99 Ernesto              Fernandez                 25000          3
+        14
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TMR961128QE5 dulce                ramon                     19000         24
+        10
+
+TMT920323394 Maria                zamorano                  16000         18
+         5
+
+TMU9904122W6 Enrique              Bahena                    16000         10
+         3
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TMZ051024LT0 Vianey               Rodriguez                 25000          2
+         2
+
+TNA740805SG9 MANUEL               aragon                    24000         12
+
+
+TNA930118558 lesli                Abarca                    16000          2
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TNA990406N50 Ana                  Torrencilla               24000         12
+
+
+TNE930722DYA Laura                Dorante                   17000         19
+
+
+TNI000526QI8 Irma                 Rangel                    16000          5
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TNI960730HV9 rafael               De la luz                 19000         11
+
+
+TNM020111CY1 Erick                Gonzalez                  21000         17
+
+
+TNN920625DF6 Rodrigo              Gama                      16000         13
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+PVI880628788 Erick                Macarro                   25000         24
+
+
+QAR910605RR5 Edith                velasquez                 25000         10
+
+
+QCO9310012U4 Eduardo              Leon                      25000          5
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+QIN770906NW8 Elisabeth            Liceaga                   19000         13
+
+
+RAL931116MI0 Raul                 Solorzano                 18000          6
+
+
+RAR981215J85 sergio               Garcia                    16000         12
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+RCA011025MM6 Ingrid               Ramirez                   17000          6
+
+
+RCA830714NV1 Luis                 Dominguez                 20000         18
+
+
+RCG880729UA6 heriberto            mayen                     25000         19
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+RCM960130PF3 jose                 perez                     19000          8
+
+
+RDC9906041X8 Roberto              gomez                     23000         17
+
+
+RDI970813D48 Lorenzo              Palomares                 19000         10
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+RDI990802HC6 Cristina             Malacara                  16000         16
+
+
+REC960419DL9 reyna                Delgado                   19000         18
+
+
+RED010601PU9 luis                 Gonzalez                  22000         23
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+REN04071486A josefina             Moya                      22000         16
+
+
+RES971009E10 Marcela              hernadez                  21000         15
+
+
+RET020513DG3 Veronica             alonso                    16000          2
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+REV050325FM6 Domitila             Tellez                    16000         11
+
+
+REV980926668 lesly                Ortiz                     20000          8
+
+
+REX011109AX8 Mildret              Velaso                    20000          3
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+RFL9402088Z7 Humberto             Martinez                  21000          7
+
+
+RFR051107UC3 Rafael               Melchor                   20000          5
+
+
+RGA780728SP9 Jose                 Reyes                     23000         12
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+RGB0202125C5 Ana                  Vazquez                   23000          5
+
+
+RLO0509062K1 maria                Reyes                     22000         18
+
+
+RMA9612022U3 Noe                  jimenez                   17000         10
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+PAE9812026X8 Erika                Irene                     24000         10
+
+
+ANL7011122B7 Gabino               Morales                   18000          6
+       100
+
+ANI890324N61 Elizandra            Zamora                    23000          1
+        99
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ANA80052693A Fernando             Juarez                    17000          5
+        97
+
+AMT970606V64 Yolanda              Hernandez                 25000         16
+        96
+
+AMM960715RV1 Jorge                vasquez                   25000         10
+        93
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+AMM9401111H4 Edgar                villanueva                17000         10
+        92
+
+AML010710U25 Francisco            Gomez                     20000         14
+        90
+
+AMI740520SP1 Yazmin               Carmona                   21000         16
+        88
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+AME720202UV4 Leticia              Beltran                   24000         16
+        83
+
+AME510426D43 JOSE                 Vieria                    22000         15
+        82
+
+AME0108036D5 silvia               Rodriguez                 24000          7
+        80
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+AMC840424NY9 Luis                 Cruz                      22000         23
+        79
+
+AMA010616H19 Sergio               sanchez                   16000         13
+        76
+
+ALS940920E87 Roberto              Palma                     16000         22
+        72
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ALR821119841 Mariana              valdepeña                 25000          5
+        71
+
+ALR740107PS9 jorge                Cortes                    23000          5
+        70
+
+ALR731010387 Irma                 Barajas                   21000          2
+        69
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ALR7006236YA Sergio               Ramirez                   25000          3
+        68
+
+ALR7006236Y4 Elizabeth            Leal                      17000         13
+        67
+
+ALR040524JB8 Marisol              Cruz                      23000         11
+        66
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ALM9611059B2 Norma                Eugenia                   25000         21
+        63
+
+ALM9103062WA Alejandro            Diaz de Leon              18000         23
+        62
+
+ALI991002D10 Jose                 Gomez                     20000         24
+        59
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ALI9608158ZA Guadalupe            Mc Beath                  21000          9
+        58
+
+ALC021022P23 Argelia              Aguilar                   16000         17
+        50
+
+ALB8111268Q8 America              Frutis                    18000         21
+        48
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ALA860723AM9 Vladimir             Diaz                      17000         24
+        45
+
+AJU920926IJO Angeles              Cortes                    20000         24
+        43
+
+AJO960709A44 Pamela               Meade                     20000         10
+        42
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+AID900322B93 Marcos               Embriz                    21000         16
+        39
+
+ANM050715LS7 Nancy                Sanchez                   24000         20
+
+
+APA0008194E6 Cristina             Ruiz                      19000         18
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+API7202187W5 Refugio              Paredes                   16000         23
+
+
+APL040619PF6 Luis                 Nafarrata                 17000         13
+
+
+AQU681211FV0 paulina              Villareal                 17000         16
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+AQU9811051R7 Elizabeth            pilar                     18000         12
+
+
+ARA930625LM0 miguel               Prieto                    18000          7
+
+
+ARA960918HC5 Karina               Rodriguez                 19000         22
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ARC900626BY4 irma                 Tarin                     21000          6
+
+
+ARI970507JB1 Alejandra            Gonzalez                  21000         24
+
+
+ASD940317DJ7 Marvella             Oliva                     24000          8
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ASE000504DBA Jose                 Moreno                    23000         24
+
+
+ASE970909D99 Paulina              Hernandez                 22000         19
+
+
+ASG970521JP5 Mario                Flores                    24000          4
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ASL030722HC9 Raul                 Hurtado                   20000          1
+
+
+ASM040121SE2 rufino               Baylon                    23000         14
+
+
+ASR770801G51 blanca               Garcia                    17000          3
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+ASS990416FT8 Erike                Rodriguez                 21000         22
+
+
+ASU750908AV5 roberto              Zamorano                  18000         20
+
+
+CFL010329RS7 Marcela              Espinoza                  25000          7
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CFL9610257Y8 Edith                Ortega                    16000          8
+
+
+CFN930804T32 Juan                 Lopez                     16000          9
+
+
+CFP020530P50 Pablo                terrzas                   22000         11
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CFT900220987 Luis                 Valencia                  24000         23
+
+
+CG55152 FABR Zoraya               Baylon                    16000         12
+
+
+CG990701 SOC Ana                  Ibarra                    24000         19
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CG991074 TRA juan                 villavicencio             21000         16
+
+
+CG991493 TRA maria                Reyes                     20000         17
+
+
+CG991600 TRA Miriam               Rivas                     16000         22
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CGT980424GN7 Carlos               Velazquez                 24000          1
+
+
+CHU01109TG8  Lorenzo              Lopez                     21000         22
+
+
+CHU011109TG8 Erika                Salais                    16000         22
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CIC9303278B5 arturo               Baylon                    25000         21
+
+
+CID9406151K7 rosalia              Pegueros                  21000          5
+
+
+CIN921207MSA Ana                  Gomez                     22000          8
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CIN941109QX0 Rosa                 Lopez                     24000         23
+
+
+CLE900920Q18 Leonardo             Vega                      18000          4
+
+
+CMA9903027X8 Manuel               Lopez                     16000         15
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CME9607127I6 RAMON                Avonce                    16000         18
+
+
+CML990721E11 Claudia              Castro                    20000          2
+
+
+COF021108SM1 Rolando              Batta                     20000         24
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+COM030310QG7 Sergio               Garcia                    22000         10
+
+
+CON980216NQ2 Luis                 Medrano                   20000         16
+
+
+CPC950717D26 otto                 Perez                     25000          3
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+CPE910524CN9 Erika                Canales                   20000          9
+
+
+CRE800407IQ4 Yolanda              jimenez                   19000         16
+
+
+TGP9411291X2 Jorge                Vega                      23000         11
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TGR670313N15 Candy                Hernandez                 22000         11
+
+
+TGR930505RA6 Esteban              Fernandez                 17000         14
+
+
+TGS761023DR9 Jose                 Gomez                     23000          4
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TGS820120318 Marcela              garcia                    16000         14
+
+
+TGV980715MR1 Laura                Castro                    23000          5
+
+
+THD9001194Q1 Hector               Martinez                  25000          1
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+THE940114CR8 Vianey               Martinez                  21000         22
+
+
+THE980324HYA EDGAR                Rodriguez                 18000         14
+
+
+THI000706RW6 Esteban              Alcalá                    16000         24
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+THI750725EX3 Esteban              salas                     20000         11
+
+
+TIB600729U37 Lilia                Mendez                    19000         17
+
+
+TIC0107253B6 German               Salvador                  18000         10
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TIC020502814 fernando             Villanueva                20000         15
+
+
+TIC961203CB9 Arturo               Galvan                    22000         16
+
+
+TID960301M19 Maria                Salguero                  19000         17
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TIE810925S94 Roxana               Reyes                     16000         21
+
+
+TIE980511CW9 ARTURO               Montes                    19000          4
+
+
+TES900801IS1 ELENA                Lechuga                   25000         10
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TES910530QQ8 Pablo                Damian                    24000         18
+
+
+TES991026197 Fausto               Vega                      23000         16
+
+
+TET960508QJ1 Laura                Malacara                  23000         16
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TEX030403NC8 Enrique              Gonzales                  16000         18
+
+
+TFA990617PE7 Cynthia              Martinez                  19000          4
+
+
+TFG060626CT6 Santiago             Garcia                    17000         18
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TFG8911307D1 Jorge                anne                      20000          5
+
+
+TFL930708UZ2 Jose                 Soto                      25000         22
+
+
+TFL980511ES7 lourdes              Garcia                    17000         11
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TFN050405R71 Marco                Elizalde                  23000         17
+
+
+TFO900216LS8 Sergio               García                    24000          1
+
+
+TFR000612BA9 Adriana              Morales                   20000         15
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TFU920511UZ0 Karen                Aguilera                  16000         15
+
+
+TGA950523KDA Adriana              Martínez                  20000         22
+
+
+TGA950607RZ5 ERIKA                Alvarez                   21000         20
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TGB941129NE1 Norma                Uribe                     17000         23
+
+
+TGC7408282F6 elizabeth            Islas                     24000         10
+
+
+TGE001116RQ5 Javier               ruiz                      22000         24
+
+
+
+RFC          NOMBRE               APELLIDO                 SUELDO    ID_PAIS
+------------ -------------------- -------------------- ---------- ----------
+    ID_EMP
+----------
+TGI9811172R2 Ana                  Betancourt                25000          9
+
+
+TGL011022S49 Roberto              Albarran                  17000          8
+
+
+
+164 rows selected.
+
+2
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+         9      139000
+         2      148000
+        20      149000
+        19      151000
+         4      153000
+         3      172000
+        15      173000
+         7      176000
+         6      177000
+        14      185000
+        12      188000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+         8      197000
+         1      202000
+        13      206000
+        21      211000
+        17      221000
+        23      239000
+        11      251000
+        18      257000
+        22      285000
+        24      292000
+         5      313000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        10      362000
+        16      418000
+
+24 rows selected.
+
+3
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        14      185000
+         6      177000
+        23      239000
+        15      173000
+         1      202000
+         7      176000
+        17      221000
+         8      197000
+        11      251000
+         2      148000
+        21      211000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        12      188000
+         5      313000
+        10      362000
+        18      257000
+         4      153000
+        22      285000
+        20      149000
+         3      172000
+         9      139000
+        13      206000
+        19      151000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        16      418000
+        24      292000
+
+24 rows selected.
+
+4
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        14      185000
+         6      177000
+        23      239000
+        15      173000
+         1      202000
+         7      176000
+        17      221000
+         8      197000
+        11      251000
+         2      148000
+        21      211000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        12      188000
+         5      313000
+        10      362000
+        18      257000
+         4      153000
+        22      285000
+        20      149000
+         3      172000
+         9      139000
+        13      206000
+        19      151000
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        16      418000
+        24      292000
+
+24 rows selected.
+
+5
+
+   ID_PAIS
+----------
+        14
+        23
+         1
+        11
+         2
+         5
+        10
+        18
+        16
+        24
+
+10 rows selected.
+
+6
+
+   ID_PAIS SUM(SUELDO)
+---------- -----------
+        14      185000
+        23      239000
+         1      202000
+        11      251000
+         2      148000
+         5      313000
+        10      362000
+        18      257000
+        16      418000
+        24      292000
+
+10 rows selected.
+
+7
+
+   ID_PAIS AVG(SUELDO)
+---------- -----------
+        14  15416.6667
+        23  14058.8235
+         1  13466.6667
+        11  14764.7059
+         2  13454.5455
+         5       15650
+        10       14480
+        18  14277.7778
+        16  16076.9231
+        24  15368.4211
+
+10 rows selected.
+
+8
+
+NOMBRE
+--------------------
+Croacia
+
+9
+
+NOMBRE
+--------------------
+GRAFICOS
+
+10
+
+no rows selected
+
+NESTORLAB-SQL> spool descripcion.txt append
+
+NESTORLAB-SQL> cl scr
+NESTORLAB-SQL> commit;
+
+Commit complete.
+
+NESTORLAB-SQL> exit
