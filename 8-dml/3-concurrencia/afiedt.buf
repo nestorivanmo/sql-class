@@ -1,0 +1,5 @@
+update concierto
+set ocupado = 1,
+nombre = 'cliente 1'
+where num_asiento = 2
+/

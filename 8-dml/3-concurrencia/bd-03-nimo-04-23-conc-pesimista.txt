@@ -1,0 +1,55 @@
+NESTOR0308-SQL> select ocupado from concierto where num_asiento = 2;
+
+   OCUPADO
+----------
+         0
+
+NESTOR0308-SQL> select ocupado
+  2  from concierto
+  3  where num_asiento = 2
+  4  for update;
+
+   OCUPADO
+----------
+         0
+
+NESTOR0308-SQL> update concierto
+  2  set ocupado = 1
+  3  nombre = 'cliente 1'
+  4  where num_asiento = 2;
+nombre = 'cliente 1'
+*
+ERROR at line 3:
+ORA-00933: SQL command not properly ended
+
+
+NESTOR0308-SQL> update concierto
+  2  set ocupado = 1,
+  3  nombre = 'cliente 1'
+  4  where num_asiento = 2;
+
+1 row updated.
+
+NESTOR0308-SQL> edit
+Wrote file afiedt.buf
+
+  1  update concierto
+  2  set ocupado = 1,
+  3  nombre = 'cliente 1'
+  4* where num_asiento = 2
+NESTOR0308-SQL> select * from concierto;
+
+NUM_ASIENTO    OCUPADO NOMBRE
+----------- ---------- --------------------
+          1          1 cliente 2
+          2          1 cliente 1
+          3          0
+
+NESTOR0308-SQL> commit;
+
+Commit complete.
+
+NESTOR0308-SQL> !ls
+
+NESTOR0308-SQL> spool bd-03-nimo-04-23-conc-pesimista.txt append
+NESTOR0308-SQL> spool off

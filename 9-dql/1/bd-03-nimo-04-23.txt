@@ -1,0 +1,240 @@
+NESTOR0308-SQL> select sysdate from dual;
+
+SYSDATE
+------------------
+23-APR-20
+
+NESTOR0308-SQL> select 1 + 1 from dual;
+
+       1+1
+----------
+         2
+
+NESTOR0308-SQL> desc dual
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+NESTOR0308-SQL> col name a15
+SP2-0158: unknown COLUMN option "a15"
+NESTOR0308-SQL> col name format a20;
+NESTOR0308-SQL> /
+
+       1+1
+----------
+         2
+
+NESTOR0308-SQL> desc dual;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+NESTOR0308-SQL> select * from dual;
+
+D
+-
+X
+
+NESTOR0308-SQL> create table prueba(
+  2  id number
+  3  );
+
+Table created.
+
+NESTOR0308-SQL> select 1 + 1 from prueba;
+
+no rows selected
+
+NESTOR0308-SQL> insert into prueba values (1);
+
+1 row created.
+
+NESTOR0308-SQL> insert into prueba values (2);
+
+1 row created.
+
+NESTOR0308-SQL> insert into prueba values (3);
+
+1 row created.
+
+NESTOR0308-SQL> insert into prueba values (4);
+
+1 row created.
+
+NESTOR0308-SQL> insert into prueba values (5);
+
+1 row created.
+
+NESTOR0308-SQL> select 1+1 from prueba;
+
+       1+1
+----------
+         2
+         2
+         2
+         2
+         2
+
+NESTOR0308-SQL> select 1+1 from prueba where id = 1;
+
+       1+1
+----------
+         2
+
+NESTOR0308-SQL> select sysdate from prueba where id = 1;
+
+SYSDATE
+------------------
+23-APR-20
+
+NESTOR0308-SQL> select 7*4 from prueba where id = 1;
+
+       7*4
+----------
+        28
+
+NESTOR0308-SQL> select * from prueba;
+
+        ID
+----------
+         1
+         2
+         3
+         4
+         5
+
+NESTOR0308-SQL> select count(*) from pruebaM
+  2  ;
+select count(*) from pruebaM
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+NESTOR0308-SQL> select count(*) from prueba;
+
+  COUNT(*)
+----------
+         5
+
+NESTOR0308-SQL> select 7*4 as expr from prueba;
+
+      EXPR
+----------
+        28
+        28
+        28
+        28
+        28
+
+NESTOR0308-SQL> select 7*4 as expr from prueba where id=1;
+
+      EXPR
+----------
+        28
+
+NESTOR0308-SQL> spool bd-03-nimo-04-23.txt append
+NESTOR0308-SQL> select 1+1 as suma from dual;
+
+      SUMA
+----------
+         2
+
+NESTOR0308-SQL> select 1
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected
+
+
+NESTOR0308-SQL> select 1+1 suma from dual;
+
+      SUMA
+----------
+         2
+
+NESTOR0308-SQL> select 1+1 "SUMA BASICA" from dual;
+
+SUMA BASICA
+-----------
+          2
+
+NESTOR0308-SQL> select 1+1 "Suma Básica" from dual;
+
+Suma Básica
+-----------
+          2
+
+NESTOR0308-SQL> select 1+1 "El resultado es: " from dual;
+
+El resultado es:
+-----------------
+                2
+
+NESTOR0308-SQL> select 1+1 "El resultado es~: " from dual;
+
+El resultado es~:
+------------------
+                 2
+
+NESTOR0308-SQL> select id as "identif" from prueba;
+
+   identif
+----------
+         1
+         2
+         3
+         4
+         5
+
+NESTOR0308-SQL> select id as clave from prueba;
+
+     CLAVE
+----------
+         1
+         2
+         3
+         4
+         5
+
+NESTOR0308-SQL> select id as clave from prueba
+  2  where id = 1;
+
+     CLAVE
+----------
+         1
+
+NESTOR0308-SQL> select id as clave from prueba
+  2  where id <= 3
+  3  order by id;
+
+     CLAVE
+----------
+         1
+         2
+         3
+
+NESTOR0308-SQL> select id as clave from prueba
+  2  where id <= 3
+  3  order by clave;
+
+     CLAVE
+----------
+         1
+         2
+         3
+
+NESTOR0308-SQL> select id as clave from prueba
+  2  where id <= 3
+  3  order by clave desc;
+
+     CLAVE
+----------
+         3
+         2
+         1
+
+NESTOR0308-SQL> !ls
+
+NESTOR0308-SQL> exit
