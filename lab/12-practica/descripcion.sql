@@ -1,6 +1,11 @@
-connect nestorlab/nestor;
+set serveroutput on
+begin
+  dbms_output.put_line('Hola mundo!, fecha actual: ' || sysdate);
+end;
+/
 
 --BLOQUES ANÓNIMOS
+set serveroutput on
 BEGIN
 	DBMS_OUTPUT.put_line('Hola mundo');
 END;
@@ -21,20 +26,18 @@ END;
 
 
 --ahora hacemos un bloque anónimo
+set serveroutput on
 DECLARE
-    V_TOTAL NUMBER(10,0);
     V_SUCURSAL VARCHAR2(50);
     V_ID_SUC NUMBER(10,0) := '&ID_SUC';
 BEGIN
-    SELECT S.NOMBRE, COUNT(E.MATRICULA) AS CONTEO
-    INTO V_SUCURSAL, V_TOTAL
-    FROM EMPLEADO E INNER JOIN SUCURSAL S
-    ON E.ID_SUC = S.ID_SUC
-    WHERE E.ID_SUC = V.ID_SUC
-    GROUP BY S.NOMBRE;
+    SELECT S.NOMBRE
+    INTO V_SUCURSAL
+    FROM SUCURSAL S
+    WHERE E.ID_SUC = S.ID_SUC
     
     DBMS_OUTPUT.PUT_LINE('La sucursal de ' || V_SUCURSAL);
-    DBMS_OUTPUT.PUT_LINE('Tiene   ' || V_TOTAL || ' EMPLEADOS');
+    --DBMS_OUTPUT.PUT_LINE('Tiene   ' || V_TOTAL || ' EMPLEADOS');
     
 END;
 
