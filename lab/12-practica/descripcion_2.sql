@@ -96,7 +96,26 @@ commit;
 
 
 --11. conectados como juan y comprobamos los datos de angel.empleado
+-- 11
+select * from angel.empleado;
 
+--12 insercion de datos
+insert into angel.empleado values (10400, 'ROLAN', 'PEREZ', 10316, 4188, 3, 3);
+insert into angel.empleado values (10401, 'VALENTINA', 'VILLAGOMEZ', 10312, 4051, 1, 3);
+insert into angel.empleado values (10402, 'VIVIANA', 'ESPINOSA', 10315, 4188, 5, 4);
+
+select * from angel.empleado
+order by matricula desc;
+
+--13. verificiacion del trigger y usuario juan
+select * from angel.movimiento
+order by momento desc;
+
+
+--14. num de movimientos por usuario
+select usuario, count(movimiento)
+from angel.movimiento
+group by usuario;
 
 
 
