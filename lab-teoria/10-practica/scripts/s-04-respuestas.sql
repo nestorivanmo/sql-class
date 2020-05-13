@@ -127,9 +127,6 @@ create table consulta_7 as
   from articulo a, status_articulo s
   where s.status_articulo_id between 2 and 4;
   
-drop table consulta_7;
-select * from consulta_7;  
-select * from consulta_r7;
 
 /*
 "ARTICULO_ID"	"NOMBRE"	"CLAVE_ARTICULO"	"PRECIO_INICIAL"	"STATUS_ARTICULO_ID"
