@@ -10,25 +10,50 @@ Emplear como nombres de columnas: num_articulos, ingresos.
 Emplear sintaxis estándar.
 R: Se han vendido 309 artículos
 */
-
+create table consulta_1 as
+  select count(*) as num_articulos, sum(v.precio_venta) as ingresos
+  from articulo a
+  full outer join subasta s on a.subasta_id = s.subasta_id
+  full outer join subasta_venta v on v.articulo_id = a.articulo_id
+  where s.fecha_inicio between to_date('01/01/2010', 'dd/mm/yyyy') and 
+  to_date('31/12/2010', 'dd/mm/yyyy');
+  
 
 /*
 2. Mostrar el total de artículos que no fueron vendidos en las subastas del 2010
 
 R: El resultado debe estar entre 187 y 190
 */
+create table consulta_2 as
+  select count(*) as total_vendidos
+  from articulo a 
+  join subasta s on s.subasta_id = a.subasta_id
+  join status_articulo st on st.status_articulo_id = a.status_articulo_id
+  where st.clave in ('REGISTRADO', 'EN SUBASTA') and
+    s.fecha_inicio between to_date('01/01/2010', 'dd/mm/yyyy') and 
+    to_date('31/12/2010', 'dd/mm/yyyy');
+
 
 /*
 3. Generar una consulta que contenga las siguientes columnas considerando 
 únicamente a la subasta ‘EXPO-MAZATLAN’
  Precio inicial del artículo más barato (precio de compra)
- Precio Inicial más caro
+ Precio inicial más caro
  Precio de venta más barato,
  Precio de venta más caro
 
 R: El resultado es un solo registro con las 4 columnas anteriores, el precio más
 barato de compra es 34001.52.
 */
+create table consulta_3 as
+  select min(a.precio_inicial) as mas_barato_compra, 
+    max(a.precio_inicial) as mas_caro_compra, 
+    min(v.precio_venta) as mas_barato_venta, 
+    max(v.precio_venta) as mas_caro_venta
+  from articulo a
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  join subasta s on s.subasta_id = a.subasta_id
+  where s.nombre = 'EXPO-MAZATLAN';
 
 
 /*
@@ -42,6 +67,14 @@ subasta_venta.
 
 R: Se obtiene un solo registro.
 */
+create table consulta_4 as
+  select c.cliente_id, c.email, t.numero_tarjeta
+  from cliente c
+  join tarjeta_cliente t on t.cliente_id = c.cliente_id
+  left join subasta_venta v on v.cliente_id = c.cliente_id  
+  where c.fecha_nacimiento between to_date('01/01/1970', 'dd/mm/yyyy') and
+    to_date('31/12/1975', 'dd/mm/yyyy')
+    and v.precio_venta is null;
 
 
 /*
@@ -53,6 +86,13 @@ artículos, el tipo de artículo y la clave del status.
 
 R: Se deben obtener 6 registros.
 */
+create table consulta_5 as
+  select count(*) as num, a.tipo_articulo, s.clave
+  from articulo a
+  join status_articulo s on s.status_articulo_id = a.status_articulo_id
+  group by a.tipo_articulo, s.clave
+  having s.clave in ('VENDIDO', 'ENTREGADO');
+
 
 
 /*
@@ -65,7 +105,16 @@ ordenadas del mayor al menor monto obtenido
 Emplear notación SQL estándar.
 R: Se deben obtener 18 registros.
 */
-
+create table consulta_6 as
+  select s.nombre, s.fecha_inicio, s.lugar, a.tipo_articulo, 
+    sum(v.precio_venta) as total
+  from articulo a
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  join subasta s on s.subasta_id = a.subasta_id
+  group by a.tipo_articulo, s.fecha_inicio, s.nombre, s.lugar
+  having s.fecha_inicio between to_date('01/01/2009', 'dd/mm/yyyy') and
+    to_date('31/12/2009', 'dd/mm/yyyy')
+  ;
 
 /*
 7. La empresa desea regalar un artículo a todos los clientes que cumplan con 
@@ -73,24 +122,42 @@ alguna de las siguientes condiciones:
 a. Que el cliente haya comprado más de 5 productos desde que se registró en la 
 base de datos.
 b. Que el monto total de todos los productos que haya comprado supere a los 
-$3,000,000.
-
-Generar una sentencia SQL empleando operadores del álgebra relacional 
+$3,000,000.Generar una sentencia SQL empleando operadores del álgebra relacional 
 (Set operators). Determine id, nombre, apellidos, numero de productos
 comprados y monto total.
 
-
-R: Los montos totales y el número de artículos son: TOTAL NUM_ARTICULOS
-========== =============
-4487933.17 6
-3542077.21 4 
-3034465.63 4 
-3421015.72 5 
-3083806.95 4 
-3859436.78 4 
-3116215.04 5 
-3481850.47 6
+R: Los montos totales y el número de artículos son: 
 */
+create table consulta_7 as
+  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, (
+      select count(*)
+      from subasta_venta v
+      where v.cliente_id = c.cliente_id
+    ) as num_prods, (
+      select sum(v.precio_venta)
+      from subasta_venta v
+      where v.cliente_id = c.cliente_id
+    ) as monto_total
+  from cliente c
+  where (select count(*) from subasta_venta v 
+  where v.cliente_id = c.cliente_id) >= 4
+  union
+  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, (
+      select count(*)
+      from subasta_venta v
+      where v.cliente_id = c.cliente_id
+    ) as num_prods, (
+      select sum(v.precio_venta)
+      from subasta_venta v
+      where v.cliente_id = c.cliente_id
+    ) as monto_total
+  from cliente c
+  where (select sum(v.precio_venta) from subasta_venta v 
+  where v.cliente_id = c.cliente_id) >= 3000000;
+
+drop table consulta_7;
+select * from consulta_7;
+select * from consulta_r7;
 
 
 /*

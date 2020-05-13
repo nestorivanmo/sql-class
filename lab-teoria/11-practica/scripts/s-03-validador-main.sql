@@ -13,12 +13,12 @@ define p_archivo_validador ='s-03p-validador-consultas.plb'
 --
 -- Nombre del usuario empleado en esta práctica
 --
-define p_usuario='jrc_p1101_subastas'
+define p_usuario='nimo_p1101_subastas'
 
 --
 -- Password del usuario empleado en esta práctica
 --
-define p_usuario_pass='jorge'
+define p_usuario_pass='nestor'
 
 --
 -- Password del usuario sys
