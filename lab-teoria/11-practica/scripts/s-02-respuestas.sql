@@ -129,35 +129,9 @@ comprados y monto total.
 R: Los montos totales y el número de artículos son: 
 */
 create table consulta_7 as
-  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, (
-      select count(*)
-      from subasta_venta v
-      where v.cliente_id = c.cliente_id
-    ) as num_prods, (
-      select sum(v.precio_venta)
-      from subasta_venta v
-      where v.cliente_id = c.cliente_id
-    ) as monto_total
-  from cliente c
-  where (select count(*) from subasta_venta v 
-  where v.cliente_id = c.cliente_id) >= 4
-  union
-  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, (
-      select count(*)
-      from subasta_venta v
-      where v.cliente_id = c.cliente_id
-    ) as num_prods, (
-      select sum(v.precio_venta)
-      from subasta_venta v
-      where v.cliente_id = c.cliente_id
-    ) as monto_total
-  from cliente c
-  where (select sum(v.precio_venta) from subasta_venta v 
-  where v.cliente_id = c.cliente_id) >= 3000000;
-
-drop table consulta_7;
-select * from consulta_7;
-select * from consulta_r7;
+  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno
+  from cliente c 
+  join subasta_venta v on v.cliente_id = c.cliente_id;
 
 
 /*
@@ -169,6 +143,22 @@ entregado.
 
 R: Se deben obtener 11 registros.
 */
+create table consulta_8 as
+  select s.subasta_id, s.nombre, s.fecha_inicio, (a.nombre) as articulo_nombre,
+    a.clave_articulo, v.precio_venta
+  from subasta s
+  join articulo a on a.subasta_id = s.subasta_id
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  where to_char(s.fecha_inicio, 'yyyy') = '2010' and
+    to_char(s.fecha_inicio, 'mm') in ('01', '03', '06') and
+    v.precio_venta = (
+      select max(v.precio_venta) as precio
+      from subasta r
+      join articulo a on a.subasta_id = r.subasta_id
+      join subasta_venta v on v.articulo_id = a.articulo_id
+      where r.subasta_id = s.subasta_id
+    );
+
 
 /*
 9. Calcular el monto total de la última factura del cliente GALILEA GOMEZ 
@@ -176,6 +166,20 @@ GONZALEZ.
 
 R: Se debe obtener $ 1765264.89
 */
+create table consulta_9 as
+  select sum(v.precio_venta) as precio_venta
+  from subasta_venta v
+  join cliente c on c.cliente_id = v.cliente_id
+  join factura_cliente f on f.factura_cliente_id = v.factura_cliente_id
+  where c.nombre = 'GALILEA' and c.apellido_paterno = 'GOMEZ' and
+    c.apellido_materno = 'GONZALEZ'
+    and f.fecha_factura = (
+      select max(f.fecha_factura) as fecha_factura
+      from factura_cliente f 
+      join subasta_venta v on v.factura_cliente_id = f.factura_cliente_id
+      where v.cliente_id = c.cliente_id
+    );
+
 
 /*
 10. Suponga que, para el próximo año, la empresa va a repetir la misma ronda de 
@@ -186,6 +190,14 @@ por id.
 
 R: Se deben obtener 11 subastas.
 */
+create table consulta_10 as
+  select s.subasta_id, s.nombre, count(*) as vendidos
+  from subasta s
+  join articulo a on a.subasta_id = s.subasta_id
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  group by s.nombre, s.subasta_id, s.fecha_inicio
+  having count(*) >= 4 and to_char(s.fecha_inicio, 'yy') = '10'
+  order by s.subasta_id; 
 
 
 /*
@@ -207,7 +219,21 @@ SUBASTA_ID FECHA_INICIO ARTICULO_ID NOMBRE DEL ARTICULO PRECIO INICIAL PROMEDIO
 R: Se debe obtener solo un artículo con id = 386, promedio general = 
 412386.15208333335
 */
-
+create table consulta_11 as
+  select s.subasta_id, s.fecha_inicio, a.articulo_id, a.nombre, a.precio_inicial, 
+    (
+      select avg(a.precio_inicial)
+      from articulo a
+      join subasta s on s.subasta_id = a.subasta_id
+      where instr(a.nombre, 'Motocicleta') != 0 and
+        to_char(s.fecha_inicio, 'yy') = '10'
+    ) as promedio_general
+  from subasta s
+  join articulo a on a.subasta_id = s.subasta_id
+  join status_articulo st on st.status_articulo_id = a.status_articulo_id
+  where instr(a.nombre, 'Motocicleta') != 0 and
+    to_char(s.fecha_inicio, 'mm/yy') = '07/10' and
+    st.clave in ('VENDIDO', 'ENTREGADO');
 
 /*
 12. La empresa decide reconocer a ciertos países por su buena participación: 
@@ -216,6 +242,8 @@ artículos con un precio de venta inicial mayor a $300,000
 
 R: Se deben obtener 2 países.
 */
+
+
 
 /*
 13. Generar una consulta que determine el id, nombre, fecha inicio e importe 
