@@ -242,8 +242,21 @@ artículos con un precio de venta inicial mayor a $300,000
 
 R: Se deben obtener 2 países.
 */
-
-
+create table consulta_12 as
+  select p.*
+  from pais p 
+  join (
+    select d.pais_id
+    from articulo a 
+    join articulo_donado d on d.articulo_id = a.articulo_id
+    group by d.pais_id, a.articulo_id, a.precio_inicial
+    having a.precio_inicial > 300000
+    order by d.pais_id
+  ) q1 
+  on p.pais_id = q1.pais_id
+  group by p.pais_id, p.clave, p.descripcion
+  having count(*) >= 3;
+  
 
 /*
 13. Generar una consulta que determine el id, nombre, fecha inicio e importe 
@@ -252,6 +265,15 @@ $3,000,000 o más en ventas.
 
 R: Se deben obtener 5 subastas.
 */
+create table consulta_13 as
+  select s.subasta_id, s.nombre, s.fecha_inicio, sum(v.precio_venta) as importe
+  from subasta s 
+  join articulo a on a.subasta_id = s.subasta_id
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  group by s.subasta_id, s.nombre, s.fecha_inicio
+  having to_char(s.fecha_inicio, 'yy') = '10' and
+    sum(v.precio_venta) > 3000000;
+
 
 /*
 14. Se ha detectado que en la base de datos existen compras realizadas por 
@@ -263,6 +285,13 @@ inexistencia de su factura.
 
 R: Se deben obtener 6 registros.
 */
+create table consulta_14 as
+  select c.nombre, c.apellido_paterno, c.apellido_materno, sum(v.precio_venta)
+    as precio_venta
+  from cliente c
+  join subasta_venta v on v.cliente_id = c.cliente_id
+  group by c.nombre, c.apellido_paterno, c.apellido_materno, v.factura_cliente_id
+  having sum(v.precio_venta) > 1000000 and v.factura_cliente_id is null;
 
 
 /*
@@ -271,3 +300,18 @@ artículos registrada en la base de datos.
 
 R: La subasta que más vendió se realizó en Cuernavaca y vendió 6 artículos.
 */
+create table consulta_15 as
+  select s.*
+  from subasta s 
+  join articulo a on a.subasta_id = s.subasta_id
+  join subasta_venta v on v.articulo_id = a.articulo_id
+  group by s.subasta_id, s.nombre, s.fecha_inicio, s.fecha_fin, s.lugar, s.cupo
+  having count(*) = (
+    select max(count(*)) 
+    from subasta s
+    join articulo a on a.subasta_id = s.subasta_id
+    join subasta_venta v on v.articulo_id = a.articulo_id
+    group by s.subasta_id
+  );
+
+
