@@ -122,17 +122,27 @@ alguna de las siguientes condiciones:
 a. Que el cliente haya comprado más de 5 productos desde que se registró en la 
 base de datos.
 b. Que el monto total de todos los productos que haya comprado supere a los 
-$3,000,000.Generar una sentencia SQL empleando operadores del álgebra relacional 
-(Set operators). Determine id, nombre, apellidos, numero de productos
-comprados y monto total.
+$3,000,000.
 
-R: Los montos totales y el número de artículos son: 
+Generar una sentencia SQL empleando operadores del álgebra relacional (Set 
+operators). 
+Determine id, nombre, apellidos, numero de productos comprados y monto total.
+
 */
 create table consulta_7 as
-  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno
+  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, 
+    count(*) as num_prods, sum(v.precio_venta) as monto_total
   from cliente c 
-  join subasta_venta v on v.cliente_id = c.cliente_id;
-
+  join subasta_venta v on v.cliente_id = c.cliente_id
+  group by c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno
+  having count(*) >= 4
+  intersect
+  select c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno, 
+    count(*) as num_prods, sum(v.precio_venta) as monto_total
+  from cliente c 
+  join subasta_venta v on v.cliente_id = c.cliente_id
+  group by c.cliente_id, c.nombre, c.apellido_paterno, c.apellido_materno
+  having sum(v.precio_venta) >= 3000000;
 
 /*
 
