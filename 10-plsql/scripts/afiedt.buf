@@ -1,7 +1,0 @@
-select c.curso_id, c.clave_grupo, c.cupo_maximo, count(*) as num_inscritos
-from curso c
-join estudiante_inscrito ei
-on c.curso_id = ei.curso_id
-where c.asignatura_id = 1
-and c.semestre_id = 1
-group by c.curso_id, c.clave_grupo, c.cupo_maximo;
