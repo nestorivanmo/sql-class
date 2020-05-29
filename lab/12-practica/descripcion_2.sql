@@ -79,19 +79,14 @@ select * from movimiento;
 --10. Creacion de otro usuario y de privilegios
 create user juan identified by 123
 default tablespace tbs_empresa;
-
 create role capturista;
-
 grant create session to capturista;
 grant create any table to capturista;
 grant select any table to capturista;
 grant insert on angel.empleado to capturista;
 grant insert on angel.sucursal to capturista;
 grant insert on angel.departamento to capturista;
-
 grant capturista to juan;
-
-
 commit;
 
 
