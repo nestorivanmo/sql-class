@@ -125,21 +125,17 @@ begin
   end case;
   dbms_output.put_line('');
   dbms_output.put_line('Otros países con mayor cupo:');
-  
   for i in 1..7 loop
     select cupo, nombre
     into v_otro_cupo, v_nombre
     from sucursal
     where id_suc = i;
-    
     if p_id_suc != i then
       if v_otro_cupo > v_cupo then
         dbms_output.put_line(v_nombre || ' -> cupo: ' || v_otro_cupo);
       end if;
     end if;
-    
   end loop;
-  
 end;
 exec loop_switch(5);
 
