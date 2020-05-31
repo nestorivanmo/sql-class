@@ -54,9 +54,9 @@ begin
 		)';
 	exception 
 		when others then
-			--código -995 indica tabla existente
+			--código -955 indica tabla existente
 			--sqlcode indica el codigo de excepcion que se generó
-			if sqlcode = -995 then 
+			if sqlcode = -955 then 
 				dbms_output.put_line('La tabla ya existe, eliminando datos.');
 				--La instrucción DELETE, a pesar de ser DML, debe ser dinámica ya que en 
 				--tiempo de compilación la tabla puede no existir. El código sql dinámico

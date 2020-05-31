@@ -12,12 +12,12 @@ define p_archivo_validador_main='s-07-validador-main.sql'
 --
 -- Nombre del usuario empleado en esta práctica
 --
-define p_usuario='jrc_p1203_inmuebles'
+define p_usuario='nimo_p1203_inmuebles'
 
 --
 -- Password del usuario empleado en esta práctica
 --
-define p_usuario_pass='jorge'
+define p_usuario_pass=''
 
 
 -- ==============La siguiente configuracion no requiere cambios ===========
