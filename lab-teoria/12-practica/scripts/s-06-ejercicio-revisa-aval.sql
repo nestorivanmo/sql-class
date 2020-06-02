@@ -89,7 +89,8 @@ begin
 							:new.cliente_id,
 							:new.status_inmueble_id
 						);
-						dbms_output.put_line('Se generó un nuevo registro en la tabla asignación pendiente: INSERT');
+						dbms_output.put_line('Se generó un nuevo registro en la tabla' 
+            || 'asignación pendiente: INSERT');
 					end if;
 				end if;
 			end if;
