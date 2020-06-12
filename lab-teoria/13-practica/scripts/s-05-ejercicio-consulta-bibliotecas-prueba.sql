@@ -1,6 +1,6 @@
 ---@Autor(es):					Néstor Martínez Ostoa
 ---@Fecha de creación: 	4/06/2020
----@Descripción:				Prueba jercicio 2 práctica 13
+---@Descripción:				Prueba ejercicio 2 práctica 13
 
 set serverouput on
 
